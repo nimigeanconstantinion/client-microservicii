@@ -36,3 +36,37 @@
     transform: rotate(360deg);
   }
 }
+
+/* custom-context-menu.css */
+
+/* Change the background color of the menu items */
+.p-contextmenu .p-menuitem {
+  background-color: white;
+  display:flex;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+/* Change the font color of the menu items */
+.p-contextmenu .p-menuitem-text {
+  color: darkred !important;
+}
+
+/* Change the background color of the menu items on hover */
+.p-contextmenu .p-menuitem:hover {
+  color:yellow !important;
+
+}
+
+/* Change the font color of the menu items on hover */
+.p-contextmenu .p-menuitem:hover .p-menuitem-text {
+  color: #fff;
+}
+
+.p-menuitem-active .p-menuitem-link{
+  background-color: #6869F5 !important;
+  color: whitesmoke !important;
+}
+.p-menuitem-active .p-menuitem-link .p-menuitem-text{
+  color: whitesmoke !important;
+}
