@@ -177,9 +177,7 @@ const Home:React.FC=()=>{
                     ):""
 
                 }
-                <button type={"button"} className={"btn btn-secondary"} data-bs-toggle={"tooltip"}
-                        data-bs-placement={"right"} data-bs-original-title={"Tooltip on right"}
-                >Test toogle Dreapta</button>
+
             </div>
 
 

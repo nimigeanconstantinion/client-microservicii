@@ -11,3 +11,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.badge .bg-primary .rounded-pill{
+  background: #82322f;
+}

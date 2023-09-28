@@ -20,6 +20,9 @@ export const WrapperDinamicQuery = styled.div<WrapperProps>`
     
   }
 
+  .icomem {
+    margin-right: 50px;
+  }
   .caption {
     background-color: rgba(120,120,120,80%);
     content-visibility: revert;
