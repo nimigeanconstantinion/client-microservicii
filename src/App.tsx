@@ -6,7 +6,7 @@ import {Provider} from "react-redux";
 import store from "./store/store";
 import {BrowserRouter, Routes,Route} from "react-router-dom";
 import {Test} from "./components/Test/Test";
-import Homes from "./components/Home";
+import Homes from "./components/Home/index2";
 function App() {
   return (
     <Provider store={store}>

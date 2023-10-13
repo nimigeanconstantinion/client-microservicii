@@ -5,9 +5,9 @@ import {
     selectTotObjSate
 } from "../../store/queryMapStocOptim/queryMapStocOpt.selector";
 import {loadCMDMap} from "../../store/comMapStocOptim/comMapStocOptim.selector";
-import React, {ChangeEvent, FormEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, FormEvent, useEffect, useRef, useState} from "react";
 import MapStocOtim from "../../models/MapStocOtim";
-import {loadComMapStocList, retriveTotalObjects} from "../../store/comMapStocOptim/comMapStocOptim.reducer";
+import {loadComMapStocList, retriveTotalObjects,updateMapStocWk,updMapElem} from "../../store/comMapStocOptim/comMapStocOptim.reducer";
 import Api from "../../Api";
 import {
     loadMapStocList, retrieveMapStocListError,
@@ -20,11 +20,17 @@ import spinner from "../../Images/spinner.gif"
 import WrapperNewHome from "./IndexStyle";
 import GridRow from "../GridRow/GridRow";
 import {WrapperRowStyle} from "../GridRow/GridRowStyle";
-
+import Grid from "../GridComp/index"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faCoffee ,faFloppyDisk} from '@fortawesome/free-solid-svg-icons';
+import {Tooltip,OverlayTrigger,Button} from "react-bootstrap";
+import MyTooltip from "./../OverlayMess/Index"
+import index from "./../OverlayMess/Index";
 
 const Homes:React.FC=()=> {
     let qMapStocList = useSelector(selectQMapStocOpt);
     let cMapStocList=useSelector(loadCMDMap);
+
     const [newObLst,setNewObLst]=useState<MapStocOtim[]>([]);
     const [spin,setSpin]=useState(0);
     const [showGrd,setShowGrd]=useState(0);
@@ -32,6 +38,8 @@ const Homes:React.FC=()=> {
     const [grupPag,setGrupPag]=useState(0);
     const[pst,setpst]=useState(0);
     const[psf,setpsf]=useState(0);
+    const refSrc=useRef<string>("");
+    const [shUtil,setShUtil]=useState(0);
 
     const [pgSel,setPgSel]=useState(1);
     const [wkLst,setWkLst]=useState<MapStocOtim[]>([]);
@@ -42,6 +50,12 @@ const Homes:React.FC=()=> {
     const [totOb,setTotob]=useState(0);
     let qRetrieve=useSelector(selectRetrieveMapStocOptState)
     const dispatch = useDispatch();
+    //
+    const tooltip = (
+        <Tooltip id="tooltip">
+            <strong>Holy guacamole!</strong> Check this info.
+        </Tooltip>
+    );
 
     useEffect(()=>{
         console.log("Am intrat");
@@ -61,7 +75,7 @@ const Homes:React.FC=()=> {
 
 
     useEffect(()=>{
-        console.log("______________in use effect grup-----------------------");
+        console.log("------------------------in use effect grup-----------------------");
         console.log("GRUPUL="+grupPag);
         console.log(totPag);
         console.log("ATENTIEEEE Lista de articole are lungimea="+wkLst.length);
@@ -86,9 +100,12 @@ const Homes:React.FC=()=> {
             }
         }
 
+
     },[grupPag])
 
     useEffect(()=>{
+        console.log("Schimb lista");
+        console.log(wkLst);
 
         let nrPx=Math.floor(wkLst.length/100)+1;
         if(nrPx==0){
@@ -100,14 +117,7 @@ const Homes:React.FC=()=> {
             }
             setTotPag(x);
         }
-        setpst(1);
-        setpsf(1);
-        // setGrupPag(1);
-        // setGrupPag((prevState) =>{
-        //     console.log("Prevstate grp="+prevState);
-        //     return prevState+1;
-        //
-        // });
+
 
     },[wkLst]);
 
@@ -160,7 +170,7 @@ const Homes:React.FC=()=> {
         // let r:Set<MapStocOtim>=new Set<MapStocOtim>(Array.from(s1).filter(a=>!s2.has(a)));
 
         // console.log(s2);
-         let rezLst:MapStocOtim[]=qlst.filter(p=>r.has(p.idIntern));
+        let rezLst:MapStocOtim[]=qlst.filter(p=>r.has(p.idIntern));
 
 
 
@@ -201,12 +211,12 @@ const Homes:React.FC=()=> {
 
                     let respp:boolean=await api.bulkAddMapStoc(addList);
 
-                   try{
+                    try{
 
-                       let r=await qLoad();
-                   }catch (e) {
+                        let r=await qLoad();
+                    }catch (e) {
 
-                   }
+                    }
                 }catch (e) {
 
                 }
@@ -238,21 +248,26 @@ const Homes:React.FC=()=> {
 
 
     let synchro=async ():Promise<void>=>{
-       console.log("In sincr");
-       console.log(newObLst);
+        console.log("In sincr");
+        console.log(newObLst);
 
         await bulkAdd(newObLst);
     }
 
 
     let showGrid=()=>{
+        setShowGrd(0);
         console.log("Intru cu grupul in SHOWGRID"+grupPag);
         console.log("Last De la pag:"+pst+" la pagina "+psf);
         console.log("Grp="+grupPag);
         console.log("Lista de lucru");
         console.log(wkLst);
-        setTotPag([1]);
-        setTotPag([1]);
+        let nrPagini:number=Math.floor(wkLst.length/100)+1;
+        let pags:number[]=[];
+        for(let i=1;i<=nrPagini;i++){
+            pags.push(i);
+        }
+        setTotPag(pags);
         setGrupPag(1);
 
         // setGrupPag((prevState) =>{
@@ -260,7 +275,9 @@ const Homes:React.FC=()=> {
         //     return prevState+1;
         //
         // });
+        setShUtil(1);
         setShowGrd(1);
+        setChGr(prevState => ++prevState);
 
     }
 
@@ -270,30 +287,29 @@ const Homes:React.FC=()=> {
         console.log("Array de paginatii ");
         console.log(totPag);
         console.log("Incrementez cu "+incr);
-        setChGr(prevState => prevState++);
-
-        let nrP=Math.floor(wkLst.length/100)+1;
-
-        if(grupPag*10<=nrP&&grupPag>=1){
+        let maxGrp=Math.floor(Math.floor(wkLst.length/100)+1)+1;
+        console.log("Max grp="+maxGrp);
+        if(grupPag>=1&&grupPag<maxGrp){
+            console.log("E in interval");
+            setChGr(prevState => prevState++);
             setGrupPag(prevState =>prevState+incr);
 
-            // setpst((grupPag-1)*10+1);
-            // setpsf(grupPag*10);
-
         }else{
-            console.log("Accesam o transa mai mare");
 
-            setGrupPag(prevState => prevState-1);
+            setGrupPag(1);
         }
 
 
     }
+
+
 
     let pgClk=(i:number)=>{
         console.log(i);
         setPgSel(i);
 
     }
+
 
 
     let refresh=()=>{
@@ -315,21 +331,98 @@ const Homes:React.FC=()=> {
         let lf:MapStocOtim[]=store.getState().comMapStocState.comMapList;
         // let a:MapStocOtim[]=structuredClone(cMapStocList);
         if(fil.length==0){
-          return lf;
+            return lf;
         }
-        return lf.filter(f=>f.grupa.includes(fil))
-              .sort((a:MapStocOtim,b:MapStocOtim)=>a.grupa.localeCompare(b.grupa));
 
+
+        let listt:MapStocOtim[]= lf.filter(f=>f.grupa.includes(fil))
+            .sort((a:MapStocOtim,b:MapStocOtim)=>a.grupa.localeCompare(b.grupa));
+
+        refrPages(listt);
+        return listt;
+
+    }
+
+    let search= (e:ChangeEvent<HTMLInputElement>):void=>{
+        let srcs:string=e.currentTarget.value;
+        console.log(srcs);
+        setShowGrd(0);
+        setChGr(0);
+        let lf:MapStocOtim[]=cMapStocList;
+       let lif:MapStocOtim[]= lf.filter(a=>a.grupa.includes(srcs)||a.categorie.includes(srcs)||a.articol.includes(srcs))
+            .sort((p,q)=>p.articol.localeCompare(q.articol))
+            .sort((a,b)=>a.categorie.localeCompare(b.categorie))
+            .sort((a,b)=>a.grupa.localeCompare(b.grupa));
+       console.log("*************** LISTA DIN SEARCH*****************")
+
+        console.log(lif);
+        setGrupPag(1);
+
+        setShUtil(prevState => prevState=prevState+1);
+        setShowGrd(prevState => prevState=prevState+1);
+
+        setChGr(prevState => prevState=prevState+1);
+        setWkLst(lif);
+    }
+
+    let savechanges=async ():Promise<void>=>{
+        let updE:MapStocOtim|null=store.getState().comMapStocState.workingMap;
+        console.log("Din save art+++++++++++")
+        // console.log(updE);
+        let newList:MapStocOtim[]=cMapStocList;
+        // console.log(cMapStocList);
+        let api=new Api();
+        try{
+            if(updE!=null){
+                try{
+                    let resp=await api.updMapStoc(updE);
+                    dispatch(updMapElem(updE));
+                    let indx=wkLst.map((a,index)=>{
+                        if(a.id==updE?.id){
+                            return index
+                        }
+                        return  -1;
+                    }).filter(z=>z>=0)[0];
+                    wkLst[indx]=updE;
+                }catch (e) {
+
+                }
+
+
+
+
+            }
+
+        }catch (e) {
+                console.log("Eroare la salvare"+e );
+        }
+
+    }
+
+    let getChangedELm=async (newArt:MapStocOtim):Promise<void>=>{
+        console.log("DIN Home--");
+        console.log(newArt);
+        dispatch(updateMapStocWk(newArt));
+        // dispatch(updMapElem(newArt));
 
 
     }
 
-    let search= (e:FormEvent<HTMLInputElement>):void=>{
-        let srcs:string=e.currentTarget.value;
-        let lf:MapStocOtim[]=store.getState().comMapStocState.comMapList;
-        setWkLst(lf.filter(a=>a.grupa.includes(srcs))
-            .sort((b,c)=>b.articol.localeCompare(c.articol)));
-        showGrid();
+
+    let refrPages=(lista:MapStocOtim[])=>{
+        if(lista.length>0){
+            let nrPx=Math.floor(lista.length)+1;
+            if(nrPx==0){
+                setTotPag([1])
+            }else{
+                let x:number[]=[];
+                for(let i=1;i<=nrPx;i++){
+                    x.push(i);
+                }
+                setTotPag(x);
+            }
+
+        }
 
     }
 
@@ -444,12 +537,17 @@ const Homes:React.FC=()=> {
                         }
 
                         {
-                            showGrd>0&&pgSel>=0?(
-
+                            shUtil>0?(
                                 <>
                                     <div className={"divutil"}>
                                         <p>Select Search Field</p>
-                                        <input className={"divsearch"} type={"text"}  onInput={(e)=>search(e)}/>
+                                        <input className={"divsearch"} type={"text"}  onChange={(e)=>search(e)}/>
+
+                                        <MyTooltip message={"Save current Days Changes!!"} divEl={(
+                                            <button type="button" className="btn btn-info" onClick={savechanges} ><FontAwesomeIcon icon={faFloppyDisk} beat /></button>
+                                        )}/>
+
+
                                     </div>
                                     <div className={"divtop"}>
                                         <p>Nr Crt</p>
@@ -461,105 +559,96 @@ const Homes:React.FC=()=> {
 
 
                                     </div>
+
                                     {
-                                       wkLst.length?(
-                                           <>
-                                               {
-                                                   wkLst.map((k,index)=>{
+                                         wkLst?(
+                                            <div className={"divgrd"}>
 
-                                                       if(index==0){
-                                                           console.log("AM 0 ============================");
-                                                       }
-                                                       return(
-                                                           <div className={"divgrd"}>
-                                                               <GridRow art={k} nrcrt={index+1} selIndx={search}/>
+                                                <Grid listMap={wkLst} maxPag={40} crtPag={pgSel} crtGrp={1} selRec={getChangedELm}/>
 
-                                                           </div>
-
-                                                       )
-
-                                                   }).filter((a,index)=>{
-                                                       return index>=(pgSel-1)*100&&index<pgSel*100
-                                                   })
-
-                                               }
-
-                                           </>
-                                       ):""
+                                            </div>
+                                            //     <>
+                                            //         <p style={{color: "blue"}}>Am schimbat lista si are {wkLst.length} elemente</p>
+                                            //         <p style={{color: "blue"}}>{wkLst[0].articol} = {wkLst[0].grupa}</p>
+                                            //     </>
 
 
+                                        ):""
                                     }
+
                                 </>
 
+
                             ):""
+
                         }
                     </div>
                     {
-                        showGrd>0&&totPag.length>0?(
-                          <>
-                              <div className={"divpag"}>
-                                  <ul className="pagination">
-                                      <li className="page-item" onClick={()=>nextGrpClk((-1))}>
-                                          <a className="page-link" href="#">&laquo;</a>
-                                      </li>
-                                      {
+                        showGrd>0&&totPag&&grupPag?(
+                            <>
+                                <div className={"divpag"}>
+                                    <ul className="pagination">
+                                        <li className="page-item" onClick={()=>nextGrpClk((-1))}>
+                                            <a className="page-link" href="#">&laquo;</a>
+                                        </li>
+                                        {
 
-                                          totPag.filter((p,index)=>{
-                                             return p>=pst&&p<=psf;
+                                            totPag.filter((p,index)=>{
+                                                return p>=pst&&p<=psf;
 
-                                          }).map(q=>{
-                                              return(
-
-
-                                                  <li key={q} className="page-item active" onClick={e=>pgClk(q)}>
-                                                      {
-                                                          pgSel==q?(
-                                                                  <a className="page-link selp" href="#" >{q}</a>
-                                                          ):
-                                                              <a className="page-link" href="#" >{q}</a>
-                                                      }
-
-                                                  </li>
-
-                                              )
-
-                                          })
-                                      }
-                                      {
-                                          psf>0&&psf<=Math.floor(wkLst.length/100)+1?(
-                                              <>
-                                                  <li className="page-item active">
-                                                      <a className="page-link" href="#">...</a>
-                                                  </li>
-                                                  <li className="page-item">
-                                                      <a className="page-link" href="#" onClick={()=>nextGrpClk(1)}>&raquo;</a>
-                                                  </li>
-                                              </>
-
-                                          ):<>
-                                              <li className="page-item disabled">
-                                                  <a className="page-link" href="#" onClick={()=>nextGrpClk(1)}>&raquo;</a>
-                                              </li>
-                                          </>
+                                            }).map(q=>{
+                                                return(
 
 
-                                      }
+                                                    <li key={q} className="page-item active" onClick={e=>pgClk(q)}>
+                                                        {
+                                                            pgSel==q?(
+                                                                    <a className="page-link selp" href="#" >{q}</a>
+                                                                ):
+                                                                <a className="page-link" href="#" >{q}</a>
+                                                        }
+
+                                                    </li>
+
+                                                )
+
+                                            })
+                                        }
+                                        {
+                                            psf>0&&psf<=Math.floor(wkLst.length/100)+1?(
+                                                <>
+                                                    <li className="page-item active">
+                                                        <a className="page-link" href="#">...</a>
+                                                    </li>
+                                                    <li className="page-item">
+                                                        <a className="page-link" href="#" onClick={()=>nextGrpClk(1)}>&raquo;</a>
+                                                    </li>
+                                                </>
+
+                                            ):<>
+                                                <li className="page-item disabled">
+                                                    <a className="page-link" href="#" onClick={()=>nextGrpClk(1)}>&raquo;</a>
+                                                </li>
+                                            </>
 
 
-                                  </ul>
-                              </div>
+                                        }
 
 
-                          </>
+                                    </ul>
+                                </div>
+
+
+                            </>
 
                         ):""
                     }
 
                 </div>
                 <div className={"footeras"}>
-                   <p>
-                       Educational&Training App
-                   </p>
+                    <p>
+                        Educational&Training App
+                    </p>
                 </div>
 
 

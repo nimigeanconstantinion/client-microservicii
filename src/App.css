@@ -96,11 +96,24 @@ div.dropdown-menu.show{
   background-color: darkgrey !important;
 }
 
-div.divpag{
-  margin:auto;
-  display:block;
-}
+
 ul.pagination{
-  width:700px !important;
-  margin: auto !important;
+  /*width:700px !important;*/
+  /*margin: auto !important;*/
+  margin:auto !important;
+}
+
+.page-item.active a.page-link.selp {
+  color: white !important;
+  background-color: red !important;
+
+}
+
+ .page-item:not(first-child) .page-link{
+   background: #97A5A6 !important;
+
+ }
+
+.page-item:last-child .page-link,.page-item:first-child .page-link {
+  background:gray !important;
 }

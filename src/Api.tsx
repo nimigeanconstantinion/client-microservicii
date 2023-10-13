@@ -56,4 +56,15 @@ export default class Api{
 
     }
 
+    updMapStoc = async (newProd:MapStocOtim): Promise<boolean> => {
+
+        let data = await this.api("http://localhost:8080/api/v1/server/upd", "POST", newProd);
+        if(data.status===200){
+            return data.json();
+        }else {
+            return Promise.reject([]);
+        }
+
+    }
+
 }

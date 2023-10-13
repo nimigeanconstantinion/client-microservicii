@@ -39,11 +39,14 @@ export const WrapperNewHome=styled.div`
     
   }
   .divpag{
-    width:100%x;
-    margin:auto;
-  }
-  ul.pagination{
-    margin: auto !important;
+    width:100%;
+    display:flex;
+    align-items: center;
+  //  width:100%x;
+  //  margin:auto;
+  //}
+  //ul.pagination{
+  //  margin: auto !important;
   }
   .footeras{
     background: #97A5A6;
@@ -55,26 +58,88 @@ export const WrapperNewHome=styled.div`
 
   }
   .footeras p{
-    margin-top: 7px;
+    margin: 7px 5px;
     color: white;
     font-size: .8em;    
   }
   .main{
     padding: 10px;
-    width:80vw;
+    width:100%s;
     height:100%;
     grid-column:2/-1;
     grid-row:1/4;
     
     display:grid;
-    grid-template-rows: repeat(4,1fr);
+    grid-template-rows: 1fr 1fr 1fr 45px;
   }
+  
   .serv{
+    margin-top:5px;
     display:grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap: 5px;
     grid-row:1/1;
 
+  }
+  
+  .divutil{
+    background:wheat;
+    color: darkred;
+    height:55px;
+    display:flex;
+    align-items: center;
+    justify-items: flex-end;
+    
+  }
+  .btn.btn-info{
+    margin: 0px 10px 0px auto !important;
+  }
+  .divutil p{
+    line-height:20px;
+    margin: auto 5px;
+  }
+  .divsearch{
+    border:none;
+    height:35px;
+    border-radius: 5px;
+    margin-left: 5px;
+    width:30%;
+  }
+
+  
+  .divtop{
+    position: sticky;
+    background-color: #97A5A6;
+    color: #2E3E51;
+    top: 0px;
+    
+    height: 40px;
+    font-size:.7em;
+    padding: 8px 0px;
+    display: grid;
+    grid-template-columns: 80px 150px minmax(400px, 1fr) 150px 150px 145px;
+    grid-row-gap: 6px;
+    grid-column-gap: 6px;
+  }
+  .divcontainer{
+    grid-row:2/4;
+    width:100%;
+    height: 100%;
+    
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+  
+  //.divgrd:nth-child(even){
+  //  background-color: #0e715e;
+  //}
+  //
+  //.divgrd:nth-child(odd){
+  //  background-color: gold;
+  //}
+  
+  .divgrd,.divuti,.divtop{
+    width:100%;
   }
   .nav{
     height:100% !important;
@@ -94,55 +159,7 @@ export const WrapperNewHome=styled.div`
     background-color: #5d6166 !important;
     width:100% !important;
   }
-  //1
-  //.flip-box {
-  //  background-color: transparent;
-  //  width: 300px;
-  //  height: 200px;
-  //  //border: 1px solid #f1f1f1;
-  //  perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  //}
-  //
-  ///* This container is needed to position the front and back side */
-  ////2
-  //.flip-box-inner {
-  //  position: relative;
-  //  width: 100%;
-  //  height: 100%;
-  //  text-align: center;
-  //  transition: transform 0.8s;
-  //  transform-style: preserve-3d;
-  //}
-  //
-  ///* Do an horizontal flip when you move the mouse over the flip box container */
-  ////3
-  //.flip-box:hover .flip-box-inner {
-  //  transform: rotateY(180deg);
-  //}
-  //
-  ///* Position the front and back side */
-  //.flip-box-front, .flip-box-back {
-  //  position: absolute;
-  //  width: 100%;
-  //  height: 100%;
-  //  -webkit-backface-visibility: hidden; /* Safari */
-  //  backface-visibility: hidden;
-  //}
-  //
-  ///* Style the front side (fallback if image is missing) */
-  //.flip-box-front {
-  //  background-color: #bbb;
-  //  color: black;
-  //}
-  //
-  ///* Style the back side */
-  //.flip-box-back {
-  //  background-color: dodgerblue;
-  //  color: white;
-  //  transform: rotateY(180deg);
-  //}
 
-  //--------------------
   
   .divc {
     background-color: transparent;
@@ -248,10 +265,10 @@ export const WrapperNewHome=styled.div`
   .divcq {
     background-color: transparent;
     width: 300px;
-    height: 30vh;
+    height: 20vh;
     //border: 1px solid #f1f1f1;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
-    margin:auto;
+    margin-top:5px ;
   }
 
 
@@ -272,7 +289,16 @@ export const WrapperNewHome=styled.div`
   .card-header{
     border-bottom: 1px solid #404040 ;
     color:white !important;
-    height:20% !important;
+    height:25% !important;
+    margin-bottom: 0px !important;
+  }
+  .card-body p{
+    margin-top:5px;
+    line-height: 20px;
+  }
+  
+  .card-text{
+    margin-top:2px;
   }
   .dfrontq , .dbackq{
     position: absolute;
@@ -286,7 +312,7 @@ export const WrapperNewHome=styled.div`
   }
 
 .dfrontq p{
-  margin-top:10px;
+  margin-top:5px;
   color: white;
   
 }
@@ -319,10 +345,12 @@ export const WrapperNewHome=styled.div`
     height: 50px;
     
   }
-  
-  
-  
-  
+
+  .pagination.page-item.active a.page-link.selp {
+    color: white;
+    background-color: red !important;
+
+  }
   
   
 `

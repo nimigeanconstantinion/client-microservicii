@@ -24,3 +24,12 @@ export const selectComTotalObjects=createSelector(
     (comMapStocState):typeof comMapStocState.totalObjects=>comMapStocState.totalObjects
 );
 
+export const setUpdObj=createSelector(
+    cMapStocState,
+    (comMapStocState):typeof comMapStocState.workingMap=>comMapStocState.workingMap
+);
+
+export const updElementofList=createSelector(
+    cMapStocState,
+    (comMapStocState):typeof comMapStocState.comMapList=>comMapStocState.comMapList
+);

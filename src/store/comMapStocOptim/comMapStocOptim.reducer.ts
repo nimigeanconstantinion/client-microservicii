@@ -1,6 +1,7 @@
 import MapStocOtim from "../../models/MapStocOtim";
 import MapStocOptimStatus from "../../models/statuses/MapStocOptimStatus";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+// import index from "../../components/OverlayMess";
 
 export interface ComMapStocOptimState{
     comMapList: MapStocOtim[],
@@ -33,15 +34,28 @@ const comMapStocSlice = createSlice({
         retrieveComMapStocListError(state,action:PayloadAction<void>){
             state.statusRetrieve=MapStocOptimStatus.ERROR
         },
-        updateMapStocList(state,action:PayloadAction<MapStocOtim>){
+        updateMapStocWk(state,action:PayloadAction<MapStocOtim>){
             state.workingMap=action.payload
         },
         retriveTotalObjects(state,action:PayloadAction<number>){
             state.totalObjects=action.payload
+        },
+        updMapElem(state,action:PayloadAction<MapStocOtim>){
+        let nrElem=state.comMapList.map((a,index)=>{
+            if(a.id==action.payload.id){
+                return index
+            }
+            return -1
+        }).filter(a=>a>=0)[0];
+
+        state.comMapList[nrElem]=action.payload;
+
+
         }
+
 
     }})
 
-export const {loadComMapStocList,retrieveComMapStocListLoading,retrieveComMapStocListSucces,retrieveComMapStocListError,retriveTotalObjects}=comMapStocSlice.actions;
+export const {loadComMapStocList,retrieveComMapStocListLoading,retrieveComMapStocListSucces,retrieveComMapStocListError,retriveTotalObjects,updateMapStocWk,updMapElem}=comMapStocSlice.actions;
 
 export default comMapStocSlice.reducer
