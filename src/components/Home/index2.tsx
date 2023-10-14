@@ -383,7 +383,9 @@ const Homes:React.FC=()=> {
                         }
                         return  -1;
                     }).filter(z=>z>=0)[0];
-                    wkLst[indx]=updE;
+                    let lst=structuredClone(wkLst);
+                    lst[indx]=updE;
+                    setWkLst(lst);
                 }catch (e) {
 
                 }
