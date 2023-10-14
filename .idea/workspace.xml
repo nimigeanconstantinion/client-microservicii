@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="23041d8c-1f0c-458d-ad02-d44ff4b5fe50" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2VNljSkO4TCsd5AiHzzj79kANDV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/40722/Desktop/projects/micro-services-1/client-microserv-redux/src/components/Test&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\40722\\Desktop\\projects\\micro-services-1\\client-microserv-redux\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\40722\Desktop\projects\micro-services-1\client-microserv-redux\src\components\Test" />
+      <recent name="C:\Users\40722\Desktop\projects\micro-services-1\client-microserv-redux\public" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\40722\Desktop\projects\micro-services-1\client-microserv-redux\src\models" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" nameIsGenerated="true" port="9229">
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="23041d8c-1f0c-458d-ad02-d44ff4b5fe50" name="Changes" comment="" />
+      <created>1694684557689</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1694684557689</updated>
+      <workItem from="1694684560157" duration="35066000" />
+      <workItem from="1695019017052" duration="8153000" />
+      <workItem from="1695032271901" duration="8298000" />
+      <workItem from="1695187063564" duration="5776000" />
+      <workItem from="1695207288142" duration="25570000" />
+      <workItem from="1695395373628" duration="7900000" />
+      <workItem from="1695533206568" duration="14671000" />
+      <workItem from="1695619857547" duration="2383000" />
+      <workItem from="1695711887172" duration="237000" />
+      <workItem from="1695720609513" duration="15088000" />
+      <workItem from="1695876572620" duration="18078000" />
+      <workItem from="1695913522629" duration="63107000" />
+      <workItem from="1696266820160" duration="9089000" />
+      <workItem from="1696315300456" duration="47283000" />
+      <workItem from="1696498152672" duration="594000" />
+      <workItem from="1696529245843" duration="2175000" />
+      <workItem from="1696532156219" duration="4986000" />
+      <workItem from="1696657368696" duration="1658000" />
+      <workItem from="1696927613018" duration="336000" />
+      <workItem from="1696929873053" duration="461000" />
+      <workItem from="1697102221673" duration="289000" />
+      <workItem from="1697123643645" duration="9034000" />
+      <workItem from="1697174102859" duration="9694000" />
+      <workItem from="1697187641304" duration="271000" />
+      <workItem from="1697194845854" duration="594000" />
+      <workItem from="1697264025093" duration="204000" />
+      <workItem from="1697264243547" duration="9000" />
+      <workItem from="1697264408339" duration="105000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
