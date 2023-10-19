@@ -67,4 +67,16 @@ export default class Api{
 
     }
 
+
+    delMapStoc = async (delProd:string): Promise<boolean> => {
+
+        let data = await this.api("http://localhost:8080/api/v1/server/del/"+delProd, "DELETE", null);
+        if(data.status===200){
+            return data.json();
+        }else {
+            return Promise.reject([]);
+        }
+
+    }
+
 }

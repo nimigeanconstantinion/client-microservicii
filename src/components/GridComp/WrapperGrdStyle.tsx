@@ -12,5 +12,15 @@ padding: 0px;
     margin:0px;
     padding:0px;
   }
-  
+
+  .dvr{
+    width: 100%;
+  }
+  .divline{
+    position:absolute;
+    width: 100%;
+    color:red;
+    z-index: 200;
+
+  }
 `

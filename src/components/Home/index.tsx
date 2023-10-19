@@ -32,6 +32,7 @@ import { faCoffee ,faFloppyDisk,faTrash} from '@fortawesome/free-solid-svg-icons
 import {Tooltip,OverlayTrigger,Button} from "react-bootstrap";
 import MyTooltip from "./../OverlayMess/Index"
 import index from "./../OverlayMess/Index";
+import ConfirmBox from "../ConfirmBox";
 
 const Homes:React.FC=()=> {
     let qMapStocList = useSelector(selectQMapStocOpt);
@@ -47,6 +48,9 @@ const Homes:React.FC=()=> {
     const refSrc=useRef<string>("");
     const [shUtil,setShUtil]=useState(0);
 
+    const [shMess,setShMess]=useState(0);
+
+    const [focussd,setFocussed]=useState<MapStocOtim|null>(null);
 
     const [pgSel,setPgSel]=useState(1);
     const [wkLst,setWkLst]=useState<MapStocOtim[]>([]);
@@ -282,9 +286,13 @@ const Homes:React.FC=()=> {
         console.log("Max grp="+maxGrp);
         if(grupPag>=1&&grupPag<maxGrp){
             console.log("E in interval");
-            setChGr(prevState => prevState++);
-            setGrupPag(prevState =>prevState+incr);
-
+            if(incr==-1&&grupPag==1){
+                setChGr(prevState => prevState++);
+            }else{
+                setChGr(prevState => prevState++);
+                setGrupPag(prevState =>prevState+incr);
+            }
+       
         }else{
 
             setGrupPag(1);
@@ -293,15 +301,11 @@ const Homes:React.FC=()=> {
 
     }
 
-
-
     let pgClk=(i:number)=>{
         console.log(i);
         setPgSel(i);
 
     }
-
-
 
     let refresh=()=>{
 
@@ -337,17 +341,17 @@ const Homes:React.FC=()=> {
 
     let search= (e:ChangeEvent<HTMLInputElement>):void=>{
         let srcs:string=e.currentTarget.value;
-        console.log(srcs);
+        // console.log(srcs);
         setShowGrd(0);
         setChGr(0);
         let lf:MapStocOtim[]=cMapStocList;
-       let lif:MapStocOtim[]= lf.filter(a=>a.grupa.includes(srcs)||a.categorie.includes(srcs)||a.articol.includes(srcs))
-            .sort((p,q)=>p.articol.localeCompare(q.articol))
-            .sort((a,b)=>a.categorie.localeCompare(b.categorie))
-            .sort((a,b)=>a.grupa.localeCompare(b.grupa));
-       console.log("*************** LISTA DIN SEARCH*****************")
+           let lif:MapStocOtim[]= lf.filter(a=>a.grupa.includes(srcs)||a.categorie.includes(srcs)||a.articol.includes(srcs))
+                .sort((p,q)=>p.articol.localeCompare(q.articol))
+                .sort((a,b)=>a.categorie.localeCompare(b.categorie))
+                .sort((a,b)=>a.grupa.localeCompare(b.grupa));
+        // console.log("*************** LISTA DIN SEARCH*****************")
 
-        console.log(lif);
+        // console.log(lif);
         setGrupPag(1);
 
         setShUtil(prevState => prevState=prevState+1);
@@ -359,10 +363,7 @@ const Homes:React.FC=()=> {
 
     let savechanges=async ():Promise<void>=>{
         let updE:MapStocOtim|null=store.getState().comMapStocState.workingMap;
-        console.log("Din save art+++++++++++")
-        // console.log(updE);
         let newList:MapStocOtim[]=cMapStocList;
-        // console.log(cMapStocList);
         let api=new Api();
         try{
             if(updE!=null){
@@ -421,12 +422,40 @@ const Homes:React.FC=()=> {
     }
 
     let delRec=()=>{
+        setShMess(1);
+
+        setShUtil(0);
+
+
 
     }
 
-    let selRec=()=>{
+    let btnMsgClk= async (choose:number):Promise<void>=>{
 
+        if(choose>=0){
+            if(choose==1){
+                let api=new Api();
+                try{
+                    let response=await api.delMapStoc(focussd!.idIntern);
+                    if(response==true&&focussd?.id!=null){
 
+                        dispatch(delMapElement(focussd.id));
+                        let lista:MapStocOtim[]=store.getState().comMapStocState.comMapList;
+                        setWkLst(lista);
+                    }
+                }catch (e) {
+
+                }
+            }
+            setShMess(0);
+            setShUtil(1);
+        }
+    }
+
+    let selRec=(nr:number)=>{
+        console.log("DIN HOME am selectat "+nr);
+        console.log(wkLst[nr-1].articol);
+        setFocussed(wkLst[nr-1]);
 
     }
 
@@ -542,7 +571,16 @@ const Homes:React.FC=()=> {
                                     <img className={"imgspin"} src={spinner} alt="My GIF" />
 
                                 </>
-                            ):""
+                            ):(
+                                shMess?(
+                                    <>
+                                        <ConfirmBox message={"Stergeti articolul: "+focussd!.articol+"??"} responseFunction={btnMsgClk}/>
+                                    </>
+
+                                ):""
+
+                            )
+
 
                         }
 
@@ -600,9 +638,23 @@ const Homes:React.FC=()=> {
                             <>
                                 <div className={"divpag"}>
                                     <ul className="pagination">
-                                        <li className="page-item" onClick={()=>nextGrpClk((-1))}>
-                                            <a className="page-link" href="#">&laquo;</a>
-                                        </li>
+                                        {
+                                            grupPag>=1?(
+                                                <>
+                                                    <li className="page-item" onClick={()=>nextGrpClk((-1))}>
+                                                        <a className="page-link" href="#">&laquo;</a>
+                                                    </li>
+
+                                                </>
+                                            ):(
+                                                <>
+                                                    <li className="page-item disabled" >
+                                                        <a className="page-link" href="#">&laquo;</a>
+                                                    </li>
+
+                                                </>
+                                            )
+                                        }
                                         {
 
                                             totPag.filter((p,index)=>{

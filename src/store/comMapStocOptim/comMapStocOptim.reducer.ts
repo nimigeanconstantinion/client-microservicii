@@ -19,7 +19,7 @@ const ComMapStocOptimInitialState: ComMapStocOptimState = {
 
 const comMapStocSlice = createSlice({
 
-    name: 'load',
+    name: 'StoreCommand',
     initialState: ComMapStocOptimInitialState,
     reducers: {
         loadComMapStocList(state,action : PayloadAction<MapStocOtim[]>) {
@@ -41,21 +41,24 @@ const comMapStocSlice = createSlice({
             state.totalObjects=action.payload
         },
         updMapElem(state,action:PayloadAction<MapStocOtim>){
-        let nrElem=state.comMapList.map((a,index)=>{
-            if(a.id==action.payload.id){
-                return index
-            }
-            return -1
-        }).filter(a=>a>=0)[0];
+                let nrElem=state.comMapList.map((a,index)=>{
+                    if(a.id==action.payload.id){
+                        return index
+                    }
+                    return -1
+                }).filter(a=>a>=0)[0];
 
-        state.comMapList[nrElem]=action.payload;
+                state.comMapList[nrElem]=action.payload;
 
 
+        },
+        delMapElement(state,action:PayloadAction<number>){
+            let lista=state.comMapList.slice(action.payload);
         }
 
 
     }})
 
-export const {loadComMapStocList,retrieveComMapStocListLoading,retrieveComMapStocListSucces,retrieveComMapStocListError,retriveTotalObjects,updateMapStocWk,updMapElem}=comMapStocSlice.actions;
+export const {loadComMapStocList,retrieveComMapStocListLoading,retrieveComMapStocListSucces,retrieveComMapStocListError,retriveTotalObjects,updateMapStocWk,updMapElem,delMapElement}=comMapStocSlice.actions;
 
 export default comMapStocSlice.reducer

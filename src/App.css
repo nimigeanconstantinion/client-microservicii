@@ -74,7 +74,7 @@
   color: whitesmoke !important;
 }
 .badge.bg-primary.rounded-pill{
-  background: red !important;
+  background: #DE4A37 !important;
   /*position: absolute;*/
   /*top: 3px;*/
   /*right:2px;*/
@@ -105,7 +105,7 @@ ul.pagination{
 
 .page-item.active a.page-link.selp {
   color: white !important;
-  background-color: red !important;
+  background-color: #DE4A37 !important;
 
 }
 
@@ -116,4 +116,8 @@ ul.pagination{
 
 .page-item:last-child .page-link,.page-item:first-child .page-link {
   background:gray !important;
+}
+
+.btn.btn-outline-light{
+  margin-right: 10px !important;
 }

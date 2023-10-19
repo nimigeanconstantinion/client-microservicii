@@ -1,24 +1,41 @@
 import MapStocOtim from "../../models/MapStocOtim";
 import {WrapperRowStyle} from "./GridRowStyle";
 import {classNames} from "primereact/utils";
-import {FormEvent, useEffect, useRef, useState} from "react";
+import {FormEvent, MouseEventHandler, useEffect, useRef, useState} from "react";
 
 interface RowProps{
     art:MapStocOtim,
     nrcrt:number,
-    selIndx:Function
+    selIndx:Function,
+    isdel:boolean,
+    prevIndex:number,
+    focusRec:Function
+
 }
 
-const GridRow:React.FC<RowProps>=({art,nrcrt,selIndx})=>{
+const GridRow:React.FC<RowProps>=({art,nrcrt,selIndx,isdel,focusRec,prevIndex})=>{
 
     const [isEven,setIsEven]=useState("");
     const inputValueRef = useRef<string>("");
+    const [chColor,setChColor]=useState(0);
+    const [suf,setSuf]=useState("");
+    const [prevIndx,SetPrevIndx]=useState(0);
 
     useEffect(()=>{
+        console.log("--DIN ROW prev="+prevIndex);
         if((nrcrt-1)%2==0){
             setIsEven(" even");
         }
+        if(isdel){
+            setSuf("seldel");
+        }
     },[])
+
+
+     useEffect(()=>{
+         // console.log("!!!! Focus Row="+prevIndex);
+        // setSuf("seldel");
+     },[prevIndx])
 
     let chMapStOpt=(e:FormEvent<HTMLInputElement>)=>{
 
@@ -50,14 +67,29 @@ const GridRow:React.FC<RowProps>=({art,nrcrt,selIndx})=>{
         selIndx(newArt);
     };
 
+
+    let clkRow= (elm: React.MouseEvent<HTMLDivElement>)=>{
+        console.log("DIN ROW Ati apasat pe produsul indexd="+nrcrt);
+
+        if(elm.currentTarget.firstElementChild!=null){
+            elm.currentTarget.firstElementChild.classList.add("seldel");
+            console.log(elm.currentTarget.firstElementChild)
+        }
+        // let elem=elm.currentTarget.classList.add("seldel")
+        // setSuf("seldel");
+
+        focusRec(nrcrt);
+    }
+
+
     return(
         <>
             {
                 art!=undefined&&art!=null?(
                     // <WrapperRowStyle>
-                    <>
+                    <WrapperRowStyle onClick={(e)=>{clkRow(e)}}>
                         {/*<div key={nrcrt+".1"} className={"row crt "+isEven}>*/}
-                        <p className={"itnr "+isEven} key={nrcrt+".p1"} >{(nrcrt)+"".trim()}</p>
+                        <p className={"itnr "+isEven+" "+suf} key={nrcrt+".p1"} >{(nrcrt)+"".trim()}</p>
                         {/*</div>*/}
                         {/*<div key={nrcrt+".2"} id={"idd"} className={"row idi"}>*/}
                         <input key={art.id+".cod"} className={"itid "+isEven} type={"text"} defaultValue={art.idIntern.trim()} disabled={true}/>
@@ -82,7 +114,7 @@ const GridRow:React.FC<RowProps>=({art,nrcrt,selIndx})=>{
                         {/*</div>*/}
 
 
-                    </>
+                    </WrapperRowStyle>
 
                     // </WrapperRowStyle>
                 ):""

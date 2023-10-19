@@ -12,10 +12,13 @@ export const WrapperRowStyle=styled.div.attrs({className:"divRow"})`
   grid-template-columns: 80px 150px minmax(400px, 1fr) 150px 150px 145px;
   grid-row-gap: 6px;
   grid-column-gap: 6px;
-
+  position: relative;
+  
   div .divrow{
     width:100%;
   }
+  
+  
   
   p.itart,p.itnr{
     width:100%;
@@ -40,6 +43,14 @@ export const WrapperRowStyle=styled.div.attrs({className:"divRow"})`
   p.itart.even,p.itnr.even,input.itid.even,input.itgrp.even,input.itctg.even,input.itnrz.even{
     color: #82322f;
     background-color:wheat;
+  }
+  
+  .itnr.seldel{
+    background-color: #42BC9B;
+  }
+  .itnr.even.seldel{
+    background-color: #42BC9B !important;
+    
   }
 
   input.itnrz{

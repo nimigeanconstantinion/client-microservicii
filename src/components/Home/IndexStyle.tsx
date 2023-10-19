@@ -27,7 +27,9 @@ export const WrapperNewHome=styled.div`
 
   }
   
-  
+  .divbtns{
+    margin-left:auto;
+  }
   .commands{
     height:100%;
   }
@@ -120,6 +122,7 @@ export const WrapperNewHome=styled.div`
     grid-template-columns: 80px 150px minmax(400px, 1fr) 150px 150px 145px;
     grid-row-gap: 6px;
     grid-column-gap: 6px;
+    z-index: 1000;
   }
   .divcontainer{
     grid-row:2/4;
