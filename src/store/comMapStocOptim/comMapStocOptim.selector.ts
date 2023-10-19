@@ -33,3 +33,9 @@ export const updElementofList=createSelector(
     cMapStocState,
     (comMapStocState):typeof comMapStocState.comMapList=>comMapStocState.comMapList
 );
+
+export const delElementofList=createSelector(
+    cMapStocState,
+    (comMapStocState): typeof comMapStocState.comMapList=>comMapStocState.comMapList
+);
+

@@ -52,8 +52,16 @@ const comMapStocSlice = createSlice({
 
 
         },
-        delMapElement(state,action:PayloadAction<number>){
-            let lista=state.comMapList.slice(action.payload);
+        delMapElement(state,action:PayloadAction<string>){
+            let elem:MapStocOtim|null=state.comMapList.filter(a=>a.idIntern.trim()===action.payload.trim())[0];
+            if(elem!=null){
+
+                let indx=state.comMapList.indexOf(elem);
+
+
+                state.comMapList.splice(indx,1);
+
+            }
         }
 
 

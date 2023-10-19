@@ -4,7 +4,7 @@ import {
     selectRetrieveMapStocOptState,
     selectTotObjSate
 } from "../../store/queryMapStocOptim/queryMapStocOpt.selector";
-import {loadCMDMap} from "../../store/comMapStocOptim/comMapStocOptim.selector";
+import {loadCMDMap,updElementofList,delElementofList} from "../../store/comMapStocOptim/comMapStocOptim.selector";
 import React, {ChangeEvent, FormEvent, useEffect, useRef, useState} from "react";
 import MapStocOtim from "../../models/MapStocOtim";
 import {
@@ -59,7 +59,8 @@ const Homes:React.FC=()=> {
     const [comTotObj,setComTotObj]=useState(0);
     const [chgr,setChGr]=useState(0);
     const [totOb,setTotob]=useState(0);
-    let qRetrieve=useSelector(selectRetrieveMapStocOptState)
+    let qRetrieve=useSelector(selectRetrieveMapStocOptState);
+
     const dispatch = useDispatch();
     //
     const tooltip = (
@@ -292,7 +293,7 @@ const Homes:React.FC=()=> {
                 setChGr(prevState => prevState++);
                 setGrupPag(prevState =>prevState+incr);
             }
-       
+
         }else{
 
             setGrupPag(1);
@@ -370,6 +371,9 @@ const Homes:React.FC=()=> {
                 try{
                     let resp=await api.updMapStoc(updE);
                     dispatch(updMapElem(updE));
+
+                    console.log("AM UPDATATTTTTTTTTTT")
+                    console.log(store.getState().comMapStocState.comMapList);
                     let indx=wkLst.map((a,index)=>{
                         if(a.id==updE?.id){
                             return index
@@ -439,9 +443,10 @@ const Homes:React.FC=()=> {
                     let response=await api.delMapStoc(focussd!.idIntern);
                     if(response==true&&focussd?.id!=null){
 
-                        dispatch(delMapElement(focussd.id));
-                        let lista:MapStocOtim[]=store.getState().comMapStocState.comMapList;
-                        setWkLst(lista);
+                       dispatch(delMapElement(focussd.idIntern));
+                       console.log("Store cu NOUA LISTA");
+                       console.log(store.getState().comMapStocState.comMapList);
+                       setWkLst(store.getState().comMapStocState.comMapList);
                     }
                 }catch (e) {
 
