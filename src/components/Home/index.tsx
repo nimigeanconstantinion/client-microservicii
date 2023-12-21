@@ -4,6 +4,13 @@ import {
     selectRetrieveMapStocOptState,
     selectTotObjSate
 } from "../../store/queryMapStocOptim/queryMapStocOpt.selector";
+import {
+    selLoadAuthToken,
+    selLoadAuthUser,
+    selLoginRegisterStatus,
+    selLoginRequest
+} from "../../store/authorization/auth.selector"
+import {reInitiate} from "../../store/authorization/auth.reducer"
 import {loadCMDMap,updElementofList,delElementofList} from "../../store/comMapStocOptim/comMapStocOptim.selector";
 import React, {ChangeEvent, FormEvent, useEffect, useRef, useState} from "react";
 import MapStocOtim from "../../models/MapStocOtim";
@@ -33,11 +40,16 @@ import {Tooltip,OverlayTrigger,Button} from "react-bootstrap";
 import MyTooltip from "./../OverlayMess/Index"
 import index from "./../OverlayMess/Index";
 import ConfirmBox from "../ConfirmBox";
+import Login from "../Login";
+import Register from "../Register";
+
 
 const Homes:React.FC=()=> {
     let qMapStocList = useSelector(selectQMapStocOpt);
     let cMapStocList=useSelector(loadCMDMap);
-
+    let myToken=useSelector(selLoadAuthToken);
+    let loginRegStatus=useSelector(selLoginRegisterStatus);
+    let authUser=useSelector(selLoadAuthUser);
     const [newObLst,setNewObLst]=useState<MapStocOtim[]>([]);
     const [spin,setSpin]=useState(0);
     const [showGrd,setShowGrd]=useState(0);
@@ -47,7 +59,10 @@ const Homes:React.FC=()=> {
     const[psf,setpsf]=useState(0);
     const refSrc=useRef<string>("");
     const [shUtil,setShUtil]=useState(0);
-
+    const [showLogin,setShowLogin]=useState(0);
+    const [showRegister,setShowRegister]=useState(0);
+    const storage = window.localStorage;
+    const [storageL,setStorageL]=useState(0);
     const [shMess,setShMess]=useState(0);
 
     const [focussd,setFocussed]=useState<MapStocOtim|null>(null);
@@ -71,6 +86,7 @@ const Homes:React.FC=()=> {
 
     useEffect(()=>{
         console.log("Am intrat");
+
         setGrupPag(0);
 
     },[])
@@ -80,6 +96,7 @@ const Homes:React.FC=()=> {
         console.log("Effect Pst="+pst);
 
     },[pst])
+
     useEffect(()=>{
         console.log("Effect PsFF="+psf);
 
@@ -91,6 +108,10 @@ const Homes:React.FC=()=> {
         console.log("GRUPUL="+grupPag);
         console.log(totPag);
         console.log("ATENTIEEEE Lista de articole are lungimea="+wkLst.length);
+        const length = storage.length;
+
+        console.log("Marimea storage-ului este"+length);
+
         let maxPag=Math.floor(wkLst.length/100)+1;
         console.log("Max pag este "+maxPag);
         if(maxPag==0){
@@ -141,35 +162,44 @@ const Homes:React.FC=()=> {
         setWkLst([]);
         setShowGrd(0);
         dispatch(retrieveMapStocListLoading())
-        try {
-            let res = await api.queryGetAllMapStoc();
-            dispatch(retrieveMapStocListSucces());
-            dispatch(loadMapStocList(res));
-            const n:number=40;
-            dispatch(setTotalObjects(res.length));
-            setTotob(res.length)
-            dispatch(retrieveComMapStocListLoading());
-            let comresp=await api.comGetAllMapStoc();
-            dispatch(retrieveComMapStocListSucces());
-            if(comresp.length>0){
-                await comresp.sort((a,b)=>a.categorie.localeCompare(b.categorie));
-                console.log("Gata 1");
-                await comresp.sort((a,b)=>a.grupa.localeCompare(b.grupa));
-                console.log("gata 2");
-                dispatch(loadComMapStocList(comresp));
-                setComTotObj(comresp.length);
-                setWkLst(comresp);
+        console.log("Tokenul meu este "+myToken)
+        if(myToken!=null){
+                console.log("Sunt innnn");
+            try {
+                let res = await api.queryGetAllMapStoc(myToken);
+                dispatch(retrieveMapStocListSucces());
+                dispatch(loadMapStocList(res));
+                const n:number=40;
+                dispatch(setTotalObjects(res.length));
+                setTotob(res.length)
+                dispatch(retrieveComMapStocListLoading());
+                let comresp=await api.comGetAllMapStoc(myToken!);
+                dispatch(retrieveComMapStocListSucces());
+                if(comresp.length>0){
+                    await comresp.sort((a,b)=>a.categorie.localeCompare(b.categorie));
+                    console.log("Gata 1");
+                    await comresp.sort((a,b)=>a.grupa.localeCompare(b.grupa));
+                    console.log("gata 2");
+                    dispatch(loadComMapStocList(comresp));
+                    setComTotObj(comresp.length);
+                    setWkLst(comresp);
+                }
+                await getListNews();
+                setSpin(0);
+            } catch (error) {
+                dispatch(retrieveMapStocListError());
             }
-            await getListNews();
-            setSpin(0);
-        } catch (error) {
-            dispatch(retrieveMapStocListError());
+        }else{
+
         }
     }
 
 
     let getListNews=async ():Promise<void>=>{
         console.log("Am intrat");
+        const length = storage.length;
+
+        console.log("Marimea storage-ului este"+length);
 
         let qlst:MapStocOtim[]=store.getState().queryMapStocState.queryMapList;
         let clst:MapStocOtim[]=store.getState().comMapStocState.comMapList;
@@ -222,7 +252,7 @@ const Homes:React.FC=()=> {
                 setSpin(1);
                 try{
 
-                    let respp:boolean=await api.bulkAddMapStoc(addList);
+                    let respp:boolean=await api.bulkAddMapStoc(addList,myToken!);
 
                     try{
 
@@ -369,7 +399,7 @@ const Homes:React.FC=()=> {
         try{
             if(updE!=null){
                 try{
-                    let resp=await api.updMapStoc(updE);
+                    let resp=await api.updMapStoc(updE,myToken!);
                     dispatch(updMapElem(updE));
 
                     console.log("AM UPDATATTTTTTTTTTT")
@@ -440,7 +470,7 @@ const Homes:React.FC=()=> {
             if(choose==1){
                 let api=new Api();
                 try{
-                    let response=await api.delMapStoc(focussd!.idIntern);
+                    let response=await api.delMapStoc(focussd!.idIntern,myToken!);
                     if(response==true&&focussd?.id!=null){
 
                        dispatch(delMapElement(focussd.idIntern));
@@ -469,9 +499,62 @@ const Homes:React.FC=()=> {
 
     }
 
+    function showFirstDiv() {
+        const cntList=document.getElementsByClassName("serv");
+        const servC=cntList[0] as HTMLElement;
+        // elm2!.style.transition=' transform 2s';
+        //
+        // elm2!.style.transform= 'rotateY(180deg)';
+
+        setTimeout(()=>{
+            console.log("dsds");
+            // const elm=document.getElementById("secondDiv");
+            // const elm2=document.getElementById("firstDiv");
+            //
+            // const cntList=document.getElementsByClassName("serv");
+            // const servC=cntList[0] as HTMLElement;
+            servC!.style.display="inherit";
+
+            setShowLogin(0);
+            setShowRegister(0);
+
+            // console.log("Hellow in showfirstdiv");
+            // servC!.style.display="inherit";
+            // elm2!.style.display = 'inherit';
+            //
+            //
+            // elm!.style.display = 'none';
+
+        },2400);
+
+    }
+
+    let hideThis=(nr:number):void=> {
+        // const elm2=document.getElementById('secondDiv')
+
+        // const elm1=document.getElementById('firstDiv')
+        const cntList=document.getElementsByClassName("serv");
+        const servC=cntList[0] as HTMLElement;
+        // elm2!.style.transition=' transform 2s';
+        //
+        // elm2!.style.transform= 'rotateY(180deg)';
+
+        servC!.style.display="none";
+
+        if(nr>0){
+            setShowRegister(1);
+
+
+        }else if(nr==0){
+            setShowLogin(1);
+
+        }
+
+        // elm1!.style.display = 'none';
+        // elm2!.style.display = 'block';
+    }
 
     return (
-        <>
             <WrapperNewHome>
                 <div className={"aside"}>
                     <div className={"commands"}>
@@ -513,6 +596,26 @@ const Homes:React.FC=()=> {
                                 <a className="nav-link disabled" href="#">Disabled</a>
                             </li>
 
+
+                            {
+                                // authUser!=null&&authUser!=undefined?(
+                                authUser!=null&&authUser!=undefined?(
+                                    <>
+                                        <li className="nav-item authusr">
+                                            {/*<a className="nav-link disabled " >{"Authorized user:"}</a>*/}
+                                            {/*<a className="nav-link disabled" >{"ion constantin nimigean"}</a>*/}
+                                            <p>{"Auth user:"}</p>
+                                            <p>{authUser.name}</p>
+
+                                        </li>
+                                    </>
+                                ):""
+
+                            }
+
+
+
+
                         </ul>
                     </div>
 
@@ -521,6 +624,22 @@ const Homes:React.FC=()=> {
 
                 </div>
                 <div className={"main"}>
+
+                    {
+                        showLogin>0?(
+                            <>
+                                <Login backFunction={showFirstDiv}/>
+                            </>
+                        ):""
+                    }
+                    {
+                        showRegister>0?(
+                            <>
+                                <Register backFunction={showFirstDiv}/>
+                            </>
+                        ):""
+                    }
+                    {/*<Login/>*/}
                     <div className={"serv"}>
                         <div className={"divcq"}>
                             <div className={"divfq"}>
@@ -566,9 +685,64 @@ const Homes:React.FC=()=> {
                             </div>
 
                         </div>
+                        {/*start login*/}
+{/*--------------------------------------------------*/}
+                        <div className={"divcq"}>
+                            <div className={"divfq"}>
+                                <div className={"dfrontql"}>
+                                    <div className={"card-header"}>Login</div>
 
+                                    <div className="card-body">
+                                        <p className="card-text">This hover will start Login process for obtain Authorized profile</p>
+
+                                    </div>
+
+                                    {/*<p>This started some actions over an owned DB with declared purpose of*/}
+                                    {/*    exercising </p>*/}
+
+                                </div>
+                                <div className={"dbackqLogin cmddiv"}>
+                                    <div className={"card-header"}>Login Actions</div>
+                                    <button type={"button"} className={"btn btn-success"} onClick={()=>hideThis(0)}>Login</button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className={"divcq"}>
+                            <div className={"divfq"}>
+                                <div className={"dfrontqr"}>
+                                    <div className={"card-header"}>Register</div>
+
+                                    <div className="card-body">
+                                        <p className="card-text">This hover will start Register process for obtain access to app</p>
+
+                                    </div>
+
+
+                                </div>
+                                <div className={"dbackqLogin cmddiv"}>
+                                    <div className={"card-header"}>Regsiter Action</div>
+                                    <button type={"button"} className={"btn btn-success"} onClick={()=>hideThis(1)}>Register</button>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+{/*                        <div className="container">*/}
+{/*                            <div className="firstDiv" id="firstDiv" onMouseOver={hideThis}>*/}
+{/*                                <p>Aceasta este prima imagine</p>*/}
+{/*                            </div>*/}
+{/*                            /!*<div className="secondDiv" id="secondDiv">*!/*/}
+{/*                            /!*    <p>Aceasta este a doua imagine</p>*!/*/}
+{/*                            /!*    <button value={"Buton"} onClick={showFirstDiv}/>*!/*/}
+
+{/*                            /!*</div>*!/*/}
+{/*                        </div>*/}
                     </div>
-
+                    {/*--------------------------------------------------*/}
+                    {/*login fin*/}
                     <div className={"divcontainer"}>
                         {
                             spin>0?(
@@ -579,7 +753,7 @@ const Homes:React.FC=()=> {
                             ):(
                                 shMess?(
                                     <>
-                                        <ConfirmBox message={"Stergeti articolul: "+focussd!.articol+"??"} responseFunction={btnMsgClk}/>
+                                        <ConfirmBox message={"You are about to delete following article: "+focussd!.articol+"??"} responseFunction={btnMsgClk}/>
                                     </>
 
                                 ):""
@@ -716,14 +890,14 @@ const Homes:React.FC=()=> {
                 </div>
                 <div className={"footeras"}>
                     <p>
-                        Educational&Training App
+                        {"Educational & Testing App"}
                     </p>
                 </div>
 
 
             </WrapperNewHome>
 
-        </>
+        // </>
     )
 }
 

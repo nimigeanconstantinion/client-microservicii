@@ -4,7 +4,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import queryMapStocSlice from './queryMapStocOptim/queryMapStocOpt.reducer'
 import comMapStocSlice from './comMapStocOptim/comMapStocOptim.reducer'
-
+import authSlice from './authorization/auth.reducer'
 // const persistConfig = {
 //     key: 'queryMapStocState',
 //     storage,
@@ -23,7 +23,8 @@ import comMapStocSlice from './comMapStocOptim/comMapStocOptim.reducer'
 const store=configureStore({
     reducer:{
         queryMapStocState:queryMapStocSlice,
-        comMapStocState:comMapStocSlice
+        comMapStocState:comMapStocSlice,
+        loginAuthState:authSlice
     },
     middleware:[thunk]
 })

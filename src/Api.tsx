@@ -1,30 +1,39 @@
 import ResponseImpl from "./models/ResponseImpl";
 import MapStocOtim from "./models/MapStocOtim";
 import HttpResponse from "./models/HttpResponse";
+import User from "./models/User";
+import {getEnvVariables} from "./utility/envUtils";
+
+let env = getEnvVariables();
 
 
 export default class Api{
-    api<T, U>(path: string, method = "GET", body: U): Promise<HttpResponse<T>> {
+    api<T, U>(path: string, method = "GET", body: U,token:string|null): Promise<HttpResponse<T>> {
 
         const url = path;
 
         const options: RequestInit = {
             method,
             mode: 'cors',
-            headers: {
+            headers:{
                 "Content-Type": "application/json;charset=utf-8"
             },
-
-
             body: body == null ? null : JSON.stringify(body)
+        }
+
+        if (token !== null) {
+            options.headers = {
+                ...options.headers,
+                Authorization: `Bearer `+token,
+            };
         }
         return fetch(url, options)
     }
 
 
-    queryGetAllMapStoc = async (): Promise<MapStocOtim[]> => {
+    queryGetAllMapStoc = async (tokenString:string): Promise<MapStocOtim[]> => {
 
-        let data = await this.api("http://localhost:8080/api/v1/server/qallmap", "GET", null);
+        let data = await this.api("{env.REACT_APP_API_URL}/server/qallmap", "GET", null,tokenString);
         if(data.status===200){
             return await data.json();
         }else {
@@ -33,9 +42,9 @@ export default class Api{
 
     }
 
-    comGetAllMapStoc = async (): Promise<MapStocOtim[]> => {
+    comGetAllMapStoc = async (tokenString:string): Promise<MapStocOtim[]> => {
 
-        let data = await this.api("http://localhost:8080/api/v1/server/comallmap", "GET", null);
+        let data = await this.api("{env.REACT_APP_API_URL}/server/comallmap", "GET", null,tokenString);
         if(data.status===200){
             return await data.json();
         }else {
@@ -45,9 +54,9 @@ export default class Api{
     }
 
 
-    bulkAddMapStoc = async (newProd:MapStocOtim[]): Promise<boolean> => {
+    bulkAddMapStoc = async (newProd:MapStocOtim[],tokenString:string): Promise<boolean> => {
 
-        let data = await this.api("http://localhost:8080/api/v1/server/addbulk", "POST", newProd);
+        let data = await this.api("{env.REACT_APP_API_URL}/server/addbulk", "POST", newProd,tokenString);
         if(data.status===200){
             return data.json();
         }else {
@@ -56,9 +65,9 @@ export default class Api{
 
     }
 
-    updMapStoc = async (newProd:MapStocOtim): Promise<boolean> => {
+    updMapStoc = async (newProd:MapStocOtim,tokenString:string): Promise<boolean> => {
 
-        let data = await this.api("http://localhost:8080/api/v1/server/upd", "POST", newProd);
+        let data = await this.api("{env.REACT_APP_API_URL}/server/upd", "POST", newProd,tokenString);
         if(data.status===200){
             return data.json();
         }else {
@@ -68,13 +77,41 @@ export default class Api{
     }
 
 
-    delMapStoc = async (delProd:string): Promise<boolean> => {
+    delMapStoc = async (delProd:string,tokenString:string): Promise<boolean> => {
 
-        let data = await this.api("http://localhost:8080/api/v1/server/del/"+delProd, "DELETE", null);
+        let data = await this.api("{env.REACT_APP_API_URL}/server/del/"+delProd, "DELETE", null,tokenString);
         if(data.status===200){
             return data.json();
         }else {
             return Promise.reject([]);
+        }
+
+    }
+
+    login=async (user:User):Promise<User>=>{
+
+        let response:HttpResponse<string>=await this.api("http://edge/server/login","POST", user,null);
+        // let response:HttpResponse<string>=await this.api("http://localhost:8080/api/v1/server/login","POST", user,null);
+
+        if(response.status===200){
+
+             return response.json();
+        }else{
+
+             return Promise.reject("Eroare de logare")
+        }
+
+    }
+
+    register=async (user:User):Promise<string>=>{
+        let response:HttpResponse<string>=await this.api("http://edge/server/register","POST", user,null);
+
+        if(response.status===200){
+
+            return response.text();
+        }else{
+
+            return Promise.reject("Register Error!!")
         }
 
     }

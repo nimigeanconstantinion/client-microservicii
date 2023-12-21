@@ -1,6 +1,6 @@
 
 
-export  default interface HttpResponse<T> extends Response{
+export default interface HttpResponse<T> extends Response{
 
 
     data?:T | null;
