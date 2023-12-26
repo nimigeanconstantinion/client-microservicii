@@ -2,19 +2,23 @@ import ResponseImpl from "./models/ResponseImpl";
 import MapStocOtim from "./models/MapStocOtim";
 import HttpResponse from "./models/HttpResponse";
 import User from "./models/User";
-import {getEnvVariables} from "./utility/envUtils";
+// import {getEnvVariables} from "./utility/envUtils";
 
-let env = getEnvVariables();
+import {globalConfig, loadConfig} from './config/configLoader';
+
+// let env = getEnvVariables();
 
 
 export default class Api{
+    // const [config, setConfig] = useState<Config | null>(null);
+
     api<T, U>(path: string, method = "GET", body: U,token:string|null): Promise<HttpResponse<T>> {
 
-        const url = path;
-
+        const url =globalConfig!.apiUrl+ path;
+        // const url=path;
         const options: RequestInit = {
             method,
-            mode: 'cors',
+            mode: "cors",
             headers:{
                 "Content-Type": "application/json;charset=utf-8"
             },
@@ -30,10 +34,11 @@ export default class Api{
         return fetch(url, options)
     }
 
+    // let config = useConfig();
 
     queryGetAllMapStoc = async (tokenString:string): Promise<MapStocOtim[]> => {
 
-        let data = await this.api("{env.REACT_APP_API_URL}/server/qallmap", "GET", null,tokenString);
+        let data = await this.api("/server/qallmap", "GET", null,tokenString);
         if(data.status===200){
             return await data.json();
         }else {
@@ -44,7 +49,7 @@ export default class Api{
 
     comGetAllMapStoc = async (tokenString:string): Promise<MapStocOtim[]> => {
 
-        let data = await this.api("{env.REACT_APP_API_URL}/server/comallmap", "GET", null,tokenString);
+        let data = await this.api("{config.apiUrl}/server/comallmap", "GET", null,tokenString);
         if(data.status===200){
             return await data.json();
         }else {
@@ -56,7 +61,7 @@ export default class Api{
 
     bulkAddMapStoc = async (newProd:MapStocOtim[],tokenString:string): Promise<boolean> => {
 
-        let data = await this.api("{env.REACT_APP_API_URL}/server/addbulk", "POST", newProd,tokenString);
+        let data = await this.api("/server/addbulk", "POST", newProd,tokenString);
         if(data.status===200){
             return data.json();
         }else {
@@ -67,7 +72,7 @@ export default class Api{
 
     updMapStoc = async (newProd:MapStocOtim,tokenString:string): Promise<boolean> => {
 
-        let data = await this.api("{env.REACT_APP_API_URL}/server/upd", "POST", newProd,tokenString);
+        let data = await this.api("/server/upd", "POST", newProd,tokenString);
         if(data.status===200){
             return data.json();
         }else {
@@ -79,7 +84,7 @@ export default class Api{
 
     delMapStoc = async (delProd:string,tokenString:string): Promise<boolean> => {
 
-        let data = await this.api("{env.REACT_APP_API_URL}/server/del/"+delProd, "DELETE", null,tokenString);
+        let data = await this.api("/server/del/"+delProd, "DELETE", null,tokenString);
         if(data.status===200){
             return data.json();
         }else {
@@ -89,8 +94,10 @@ export default class Api{
     }
 
     login=async (user:User):Promise<User>=>{
-
-        let response:HttpResponse<string>=await this.api("http://edge/server/login","POST", user,null);
+        // let x=loadConfig()
+        console.log("La LOGIN cu ");
+            console.log(globalConfig!.apiUrl);
+        let response:HttpResponse<string>=await this.api("/server/login","POST", user,null);
         // let response:HttpResponse<string>=await this.api("http://localhost:8080/api/v1/server/login","POST", user,null);
 
         if(response.status===200){
@@ -104,7 +111,7 @@ export default class Api{
     }
 
     register=async (user:User):Promise<string>=>{
-        let response:HttpResponse<string>=await this.api("http://edge/server/register","POST", user,null);
+        let response:HttpResponse<string>=await this.api("/server/register","POST", user,null);
 
         if(response.status===200){
 

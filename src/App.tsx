@@ -1,5 +1,5 @@
 import React from 'react';
-
+// import {useConfig} from "./config/useConfig";
 import logo from './logo.svg';
 import './App.css';
 import {Provider} from "react-redux";
@@ -8,7 +8,6 @@ import {BrowserRouter, Routes,Route} from "react-router-dom";
 import {Test} from "./components/Test/Test";
 import Homes from "./components/Home/index";
 import Login from "./components/Login";
-import MyComponent from"./components/MyComponent/index"
 function App() {
   return (
     <Provider store={store}>
@@ -18,8 +17,7 @@ function App() {
                 <BrowserRouter>
                     <Routes>
                         <Route path={"/"} element={<Homes/>}/>
-                        <Route path={"/test"} element={<MyComponent/>}/>
-
+                        {/*<Route path={"/test"} element={<MyComponent/>}/>*/}
                     </Routes>
                 </BrowserRouter>
 
@@ -29,6 +27,11 @@ function App() {
     </Provider>
 
   );
+  //   const config = useConfig();
+  //
+  //   if (!config) return <div>Loading configuration...</div>;
+  //
+  //   return <div>API URL: {config.apiUrl}</div>;
 }
 
 export default App;

@@ -1,0 +1,4 @@
+{
+  "apiUrl": "http://edge:5000",
+  "featureFlag": true
+}

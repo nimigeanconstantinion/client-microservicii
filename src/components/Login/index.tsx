@@ -54,13 +54,16 @@ const Login:React.FC<LoginProp>=({backFunction}) => {
     let fLogin=async ()=>{
         console.log("In flogin "+ch)
         dispatch(loginRequest());
-
+        console.log("Userul :")
+        console.log(usr);
         let api=new Api();
+
         if(usr!=undefined&&usr.email!==""&&usr.password!=""){
 
 
             try{
 
+                console.log("am apasat butonul login!!!!")
 
 
                 let response=await api.login(usr);
