@@ -1,15 +1,27 @@
-version: '3.1'
+#version: '3.1'
+#
+#services:
+#  client-service:
+#    image: ion21/client-service:v3
+#    networks:
+#      - mynet
+#    ports:
+#      - "3000:80"
+#    environment:
+#      NODE_ENV: development
+#
+#networks:
+#  mynet:
+#    driver: bridge
 
+version: '3'
 services:
-  client-service:
-    image: ion21/client-service:v2
-    networks:
-      - mynet
+  my-react-app:
+    container_name: client-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV= development
     ports:
       - "3000:3000"
-    environment:
-      REACT_APP_API_URL: "http://localhost:5000"
-
-networks:
-  mynet:
-    driver: bridge

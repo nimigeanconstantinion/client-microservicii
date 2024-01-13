@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  client-service:
+    image: ion21/client-service:v2
+    networks:
+      - mynet
+    ports:
+      - "3000:80"
+    environment:
+      NODE_ENV: development
+
+networks:
+  mynet:
+    driver: bridge

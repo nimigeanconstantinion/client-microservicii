@@ -3,24 +3,27 @@ import MapStocOtim from "./models/MapStocOtim";
 import HttpResponse from "./models/HttpResponse";
 import User from "./models/User";
 // import {getEnvVariables} from "./utility/envUtils";
-
 import {globalConfig, loadConfig} from './config/configLoader';
-
+import dotenv from "dotenv";
 // let env = getEnvVariables();
 
 
 export default class Api{
-    // const [config, setConfig] = useState<Config | null>(null);
 
     api<T, U>(path: string, method = "GET", body: U,token:string|null): Promise<HttpResponse<T>> {
 
+
         const url =globalConfig!.apiUrl+ path;
+        // const urll=process.env.NODE_ENV;
         // const url=path;
+        // const url="http://localhost:5000"+path;
+        // alert("Caut in calea "+globalConfig!.apiUrl);
+        // alert("si din env ="+urll);
         const options: RequestInit = {
             method,
             mode: "cors",
             headers:{
-                "Content-Type": "application/json;charset=utf-8"
+                "Content-Type" : "application/json;charset=utf-8"
             },
             body: body == null ? null : JSON.stringify(body)
         }
@@ -36,6 +39,16 @@ export default class Api{
 
     // let config = useConfig();
 
+    loadEnvVariables=async ()=>{
+        try{
+            await loadConfig();
+            return process.env.NODE_ENV;
+        }catch (e){
+
+        }
+
+    }
+
     queryGetAllMapStoc = async (tokenString:string): Promise<MapStocOtim[]> => {
 
         let data = await this.api("/server/qallmap", "GET", null,tokenString);
@@ -49,7 +62,7 @@ export default class Api{
 
     comGetAllMapStoc = async (tokenString:string): Promise<MapStocOtim[]> => {
 
-        let data = await this.api("{config.apiUrl}/server/comallmap", "GET", null,tokenString);
+        let data = await this.api("/server/comallmap", "GET", null,tokenString);
         if(data.status===200){
             return await data.json();
         }else {

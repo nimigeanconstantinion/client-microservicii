@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 // import {useConfig} from "./config/useConfig";
 import logo from './logo.svg';
 import './App.css';
@@ -8,6 +8,7 @@ import {BrowserRouter, Routes,Route} from "react-router-dom";
 import {Test} from "./components/Test/Test";
 import Homes from "./components/Home/index";
 import Login from "./components/Login";
+import {globalConfig, loadConfig} from "./config/configLoader";
 function App() {
   return (
     <Provider store={store}>
@@ -27,11 +28,37 @@ function App() {
     </Provider>
 
   );
-  //   const config = useConfig();
+  //   const apiUrll = process.env.NODE_ENV || 'Default';
+  //   const [urll,setUrll]=useState("default");
   //
-  //   if (!config) return <div>Loading configuration...</div>;
+  //   useEffect(()=>{
+  //      setUrll(process.env.NODE_ENV);
+  //      load()
+  //   },[])
   //
-  //   return <div>API URL: {config.apiUrl}</div>;
+  //   let load=async ()=>{
+  //      setUrll(process.env.NODE_ENV);
+  //   }
+  //
+  //   return (
+  //       <div className="App">
+  //           <header className="App-header">
+  //               {
+  //                 urll?(
+  //                     <>
+  //
+  //                         <p>Conținutul variabilei de mediu apiUrll:</p>
+  //                         <p>{urll} {globalConfig!.apiUrl}</p>
+  //                         <p>
+  //                             {apiUrll}
+  //                         </p>
+  //                     </>
+  //                 ):""
+  //               }
+  //
+  //           </header>
+  //       </div>
+  //   );
 }
 
 export default App;
