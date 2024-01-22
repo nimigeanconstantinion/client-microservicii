@@ -11,7 +11,7 @@ export default class Api{
     api<T, U>(path: string, method = "GET", body: U,token:string|null): Promise<HttpResponse<T>> {
 
 
-        const url =globalConfig!.apiUrl+ path;
+        const url ="/server"+ path;
         // const urll=process.env.NODE_ENV;
         // const url=path;
         // const url="http://localhost:5000"+path;
@@ -19,6 +19,7 @@ export default class Api{
         // alert("si din env ="+urll);
         const options: RequestInit = {
             method,
+            mode:"cors",
             headers:{
                 "Content-Type" : "application/json;charset=utf-8"
             },
@@ -107,7 +108,7 @@ export default class Api{
         // let x=loadConfig()
         console.log("La LOGIN cu ");
             console.log(globalConfig!.apiUrl);
-        let response:HttpResponse<string>=await this.api("/server/login","POST", user,null);
+        let response:HttpResponse<string>=await this.api("/login","POST", user,null);
         // let response:HttpResponse<string>=await this.api("http://localhost:8080/api/v1/server/login","POST", user,null);
 
         if(response.status===200){
@@ -121,7 +122,7 @@ export default class Api{
     }
 
     register=async (user:User):Promise<string>=>{
-        let response:HttpResponse<string>=await this.api("/server/register","POST", user,null);
+        let response:HttpResponse<string>=await this.api<string,User>("/register","POST", user,null);
 
         if(response.status===200){
 
