@@ -1,14 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 // import {useConfig} from "./config/useConfig";
-import logo from './logo.svg';
 import './App.css';
 import {Provider} from "react-redux";
 import store from "./store/store";
-import {BrowserRouter, Routes,Route} from "react-router-dom";
-import {Test} from "./components/Test/Test";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Homes from "./components/Home/index";
-import Login from "./components/Login";
-import {globalConfig, loadConfig} from "./config/configLoader";
+
 function App() {
   return (
     <Provider store={store}>

@@ -4,41 +4,35 @@ import {
     selectRetrieveMapStocOptState,
     selectTotObjSate
 } from "../../store/queryMapStocOptim/queryMapStocOpt.selector";
-import {
-    selLoadAuthToken,
-    selLoadAuthUser,
-    selLoginRegisterStatus,
-    selLoginRequest
-} from "../../store/authorization/auth.selector"
-import {reInitiate} from "../../store/authorization/auth.reducer"
-import {loadCMDMap,updElementofList,delElementofList} from "../../store/comMapStocOptim/comMapStocOptim.selector";
-import React, {ChangeEvent, FormEvent, useEffect, useRef, useState} from "react";
+import {selLoadAuthToken, selLoadAuthUser, selLoginRegisterStatus} from "../../store/authorization/auth.selector"
+import {loadCMDMap} from "../../store/comMapStocOptim/comMapStocOptim.selector";
+import React, {ChangeEvent, useEffect, useRef, useState} from "react";
 import MapStocOtim from "../../models/MapStocOtim";
 import {
+    delMapElement,
     loadComMapStocList,
-    retrieveComMapStocListLoading, retrieveComMapStocListSucces,
+    retrieveComMapStocListLoading,
+    retrieveComMapStocListSucces,
     retriveTotalObjects,
     updateMapStocWk,
-    updMapElem,delMapElement
+    updMapElem
 } from "../../store/comMapStocOptim/comMapStocOptim.reducer";
 import Api from "../../Api";
 import {
-    loadMapStocList, retrieveMapStocListError,
+    loadMapStocList,
+    retrieveMapStocListError,
     retrieveMapStocListLoading,
-    retrieveMapStocListSucces, setTotalObjects
+    retrieveMapStocListSucces,
+    setTotalObjects
 } from "../../store/queryMapStocOptim/queryMapStocOpt.reducer";
 import store from "../../store/store";
-import WrapperTest from "../Test/TestStyle";
 import spinner from "../../Images/spinner.gif"
 import WrapperNewHome from "./IndexStyle";
-import GridRow from "../GridRow/GridRow";
-import {WrapperRowStyle} from "../GridRow/GridRowStyle";
 import Grid from "../GridComp/index"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faCoffee ,faFloppyDisk,faTrash} from '@fortawesome/free-solid-svg-icons';
-import {Tooltip,OverlayTrigger,Button} from "react-bootstrap";
+import {faFloppyDisk, faTrash} from '@fortawesome/free-solid-svg-icons';
+import {Tooltip} from "react-bootstrap";
 import MyTooltip from "./../OverlayMess/Index"
-import index from "./../OverlayMess/Index";
 import ConfirmBox from "../ConfirmBox";
 import Login from "../Login";
 import Register from "../Register";

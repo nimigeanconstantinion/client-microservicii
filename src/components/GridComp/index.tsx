@@ -1,7 +1,6 @@
 import MapStocOtim from "../../models/MapStocOtim";
 import GridRow from "../GridRow/GridRow";
 import {useEffect, useState} from "react";
-import {WrapperRowStyle} from "../GridRow/GridRowStyle";
 import {WrapperGrdStyle} from "./WrapperGrdStyle";
 
 

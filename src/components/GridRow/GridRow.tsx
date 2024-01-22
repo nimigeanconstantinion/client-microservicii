@@ -1,7 +1,6 @@
 import MapStocOtim from "../../models/MapStocOtim";
 import {WrapperRowStyle} from "./GridRowStyle";
-import {classNames} from "primereact/utils";
-import {FormEvent, MouseEventHandler, useEffect, useRef, useState} from "react";
+import {FormEvent, useEffect, useRef, useState} from "react";
 
 interface RowProps{
     art:MapStocOtim,

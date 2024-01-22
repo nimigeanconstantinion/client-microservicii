@@ -1,17 +1,13 @@
-import {WrapperQuery} from "./QueryWorkStyle";
 import {WrapperDinamicQuery} from "./QueryLabelDinamicStyle";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faClipboardQuestion} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faArrowsLeftRight, faClipboardQuestion} from "@fortawesome/free-solid-svg-icons";
 import {useRef, useState} from "react";
-import {faEdit,faPlus,faMinus,faArrowsLeftRight} from "@fortawesome/free-solid-svg-icons";
 
-import 'primereact/resources/themes/lara-light-indigo/theme.css';   // theme
-import 'primereact/resources/primereact.css';                       // core css
-import 'primeicons/primeicons.css';// icons
-
-import { ContextMenu } from 'primereact/contextmenu';
+import 'primereact/resources/themes/lara-light-indigo/theme.css'; // theme
+import 'primereact/resources/primereact.css'; // core css
+import 'primeicons/primeicons.css'; // icons
+import {ContextMenu} from 'primereact/contextmenu';
 import {MenuItem, MenuItemCommandEvent} from 'primereact/menuitem';
-
 
 
 interface QueryProps{

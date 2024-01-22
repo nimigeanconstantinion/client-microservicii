@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import  Config  from '../config/Config';
+import {useEffect, useState} from 'react';
+import Config from '../config/Config';
 
 export const useConfig = () => {
     const [config, setConfig] = useState<Config | null>(null);

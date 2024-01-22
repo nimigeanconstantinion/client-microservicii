@@ -1,5 +1,4 @@
-import  Config  from './Config';
-import dotenv from 'dotenv';
+import Config from './Config';
 
 export let globalConfig: Config | null = null;
 

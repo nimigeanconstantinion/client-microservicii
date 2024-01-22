@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import WrapperTest from "./TestStyle";
-import {Popover, Button, PopoverProps, OverlayTrigger, ButtonToolbar, PopoverHeader} from "react-bootstrap";
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import {Popover, PopoverHeader, PopoverProps} from "react-bootstrap";
 
 interface PopoverPropsWithTrigger extends PopoverProps {
 }

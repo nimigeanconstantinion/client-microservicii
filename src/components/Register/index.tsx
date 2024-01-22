@@ -1,9 +1,9 @@
-import React, {ReactEventHandler, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import User from "../../models/User"
 import Api from "../../Api";
-import {selLoginRequest,selLoginRequestSucces,selLoginRequestFail,selLoadAuthUser,selLoadAuthToken,selLoginRegisterStatus} from "../../store/authorization/auth.selector"
+import {selLoginRequest} from "../../store/authorization/auth.selector"
 import {useDispatch, useSelector} from "react-redux";
-import {loginRequest,loginSucces,loginFail,loadToken,loadAuthUser} from "../../store/authorization/auth.reducer"
+import {loadAuthUser, loadToken, loginFail, loginRequest, loginSucces} from "../../store/authorization/auth.reducer"
 import store from "../../store/store";
 import AuthStatus from "../../models/statuses/AuthStatus";
 import MessageBox from "../MessageBox";

@@ -1,10 +1,8 @@
-import ResponseImpl from "./models/ResponseImpl";
 import MapStocOtim from "./models/MapStocOtim";
 import HttpResponse from "./models/HttpResponse";
 import User from "./models/User";
 // import {getEnvVariables} from "./utility/envUtils";
 import {globalConfig, loadConfig} from './config/configLoader';
-import dotenv from "dotenv";
 // let env = getEnvVariables();
 
 
@@ -21,7 +19,6 @@ export default class Api{
         // alert("si din env ="+urll);
         const options: RequestInit = {
             method,
-            mode: "cors",
             headers:{
                 "Content-Type" : "application/json;charset=utf-8"
             },

@@ -1,6 +1,7 @@
 import MapStocOtim from "../../models/MapStocOtim";
 import MapStocOptimStatus from "../../models/statuses/MapStocOptimStatus";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+
 // import index from "../../components/OverlayMess";
 
 export interface ComMapStocOptimState{

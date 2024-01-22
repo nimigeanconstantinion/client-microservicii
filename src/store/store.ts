@@ -1,7 +1,5 @@
 import {configureStore} from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
-import { persistReducer, persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 import queryMapStocSlice from './queryMapStocOptim/queryMapStocOpt.reducer'
 import comMapStocSlice from './comMapStocOptim/comMapStocOptim.reducer'
 import authSlice from './authorization/auth.reducer'

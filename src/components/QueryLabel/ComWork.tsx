@@ -1,6 +1,5 @@
-import {WrapperQuery} from "./QueryWorkStyle";
 import {WrapperDinamicQuery} from "./QueryLabelDinamicStyle";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCodeMerge} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
 

@@ -1,5 +1,5 @@
-import { createSelector } from "@reduxjs/toolkit";
-import  {QueryMapStocOptimState} from "./queryMapStocOpt.reducer";
+import {createSelector} from "@reduxjs/toolkit";
+import {QueryMapStocOptimState} from "./queryMapStocOpt.reducer";
 
 
 interface RootState {
