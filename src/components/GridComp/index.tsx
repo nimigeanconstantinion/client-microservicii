@@ -78,6 +78,7 @@ const Index:React.FC<GridProp>=({listMap,maxPag,crtPag,crtGrp,selRec,focusRec,pr
 
     return(
         <>
+
             {
                 listMap?(
                     <WrapperGrdStyle className={"divgrdcontainer"}>

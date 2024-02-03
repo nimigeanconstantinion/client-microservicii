@@ -11,12 +11,15 @@ export default class Api{
     api<T, U>(path: string, method = "GET", body: U,token:string|null): Promise<HttpResponse<T>> {
 
 
-        const url ="/server"+ path;
+     //   const url ="/server"+ path;
         // const urll=process.env.NODE_ENV;
+        // alert(process.env.REACT_APP_PATH_TO)
         // const url=path;
-        // const url="http://localhost:5000"+path;
-        // alert("Caut in calea "+globalConfig!.apiUrl);
+        //atrntie
+         const url="/server"+path;
+         // alert("Caut in calea "+globalConfig!.apiUrl);
         // alert("si din env ="+urll);
+
         const options: RequestInit = {
             method,
             mode:"cors",
@@ -49,7 +52,7 @@ export default class Api{
 
     queryGetAllMapStoc = async (tokenString:string): Promise<MapStocOtim[]> => {
 
-        let data = await this.api("/server/qallmap", "GET", null,tokenString);
+        let data = await this.api("/qallmap", "GET", null,tokenString);
         if(data.status===200){
             return await data.json();
         }else {
@@ -60,7 +63,7 @@ export default class Api{
 
     comGetAllMapStoc = async (tokenString:string): Promise<MapStocOtim[]> => {
 
-        let data = await this.api("/server/comallmap", "GET", null,tokenString);
+        let data = await this.api("/comallmap", "GET", null,tokenString);
         if(data.status===200){
             return await data.json();
         }else {
@@ -72,7 +75,7 @@ export default class Api{
 
     bulkAddMapStoc = async (newProd:MapStocOtim[],tokenString:string): Promise<boolean> => {
 
-        let data = await this.api("/server/addbulk", "POST", newProd,tokenString);
+        let data = await this.api("/addbulk", "POST", newProd,tokenString);
         if(data.status===200){
             return data.json();
         }else {
@@ -83,7 +86,7 @@ export default class Api{
 
     updMapStoc = async (newProd:MapStocOtim,tokenString:string): Promise<boolean> => {
 
-        let data = await this.api("/server/upd", "POST", newProd,tokenString);
+        let data = await this.api("/upd", "POST", newProd,tokenString);
         if(data.status===200){
             return data.json();
         }else {
@@ -91,11 +94,11 @@ export default class Api{
         }
 
     }
-
+//todo trebuie scos server
 
     delMapStoc = async (delProd:string,tokenString:string): Promise<boolean> => {
 
-        let data = await this.api("/server/del/"+delProd, "DELETE", null,tokenString);
+        let data = await this.api("/del/"+delProd, "DELETE", null,tokenString);
         if(data.status===200){
             return data.json();
         }else {

@@ -887,8 +887,6 @@ const Homes:React.FC=()=> {
                         {"Educational & Testing App"}
                     </p>
                 </div>
-
-
             </WrapperNewHome>
 
         // </>

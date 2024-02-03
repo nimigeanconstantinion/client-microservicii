@@ -5,18 +5,21 @@ export let globalConfig: Config | null = null;
 export const loadConfig = async () => {
     try {
 
-        alert("Din config loader: "+process.env.NODE_ENV);
 
-        let configPath = '/config.development.json';
+      //  let configPath = '/config.development.json';
+        let configPath='';
         // console.log("-- --0000 ATENTIE   "+process.env.NODE_ENV);
-        if (process.env.NODE_ENV === 'production') {
+        if (process.env.REACT_APP_PATH_TO === 'production') {
             configPath = '/config.production.json';
+        }
+        if (process.env.REACT_APP_PATH_TO === 'development') {
+            configPath = '/config.development.json';
         }
 
         const response = await fetch(configPath);
         globalConfig = await response.json() as Config;
-        alert(globalConfig.apiUrl);
     } catch (error) {
+
         console.error('Failed to load config', error);
     }
 };

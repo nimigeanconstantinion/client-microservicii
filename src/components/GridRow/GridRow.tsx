@@ -95,7 +95,8 @@ const GridRow:React.FC<RowProps>=({art,nrcrt,selIndx,isdel,focusRec,prevIndex})=
 
                         {/*</div>*/}
                         {/*<div key={nrcrt+".3"} className={"row den"+isEven}>*/}
-                        <p key={art.id+".pd"} className={"itart "+isEven}>{art.articol}</p>
+                        {/*<p key={art.id+".pd"} className={"itart "+isEven}>{art.articol}</p>*/}
+                        <input key={art.id+".pd"} className={"itart "+isEven} type={"text"} defaultValue={art.articol.trim()} disabled={true}/>
 
                         {/*</div>*/}
                         {/*<div key={nrcrt+".4"} className={"row grp"}>*/}
