@@ -20,7 +20,7 @@ export const WrapperRowStyle=styled.div.attrs({className:"divRow"})`
   
   
   
-  p.itart,p.itnr{
+  p.itnr{
     width:100%;
     background-color: #5d6166;
     line-height: 20px;
@@ -32,7 +32,7 @@ export const WrapperRowStyle=styled.div.attrs({className:"divRow"})`
   p.itnr{
     text-align: right;
   }
-  input.itid,input.itid,input.itgrp,input.itctg,input.itnrz{
+  input.itid,input.itid,input.itgrp,input.itctg,input.itnrz,input.itart{
     width:100%;
     height:100%;
     color:white;
@@ -40,7 +40,7 @@ export const WrapperRowStyle=styled.div.attrs({className:"divRow"})`
     padding: 0px 0px 6px 5px;
     border: none;
   }
-  p.itart.even,p.itnr.even,input.itid.even,input.itgrp.even,input.itctg.even,input.itnrz.even{
+  p.itnr.even,input.itid.even,input.itart.even,input.itgrp.even,input.itctg.even,input.itnrz.even{
     color: #82322f;
     background-color:wheat;
   }
