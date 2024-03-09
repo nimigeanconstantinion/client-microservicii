@@ -1,4 +1,5 @@
 {
   "apiUrl": "http://edge:5000",
-  "featureFlag": true
+  "featureFlag": true,
+  "basename": "/"
 }

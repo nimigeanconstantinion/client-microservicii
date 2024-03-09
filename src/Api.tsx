@@ -110,8 +110,8 @@ export default class Api{
     login=async (user:User):Promise<User>=>{
         // let x=loadConfig()
         console.log("La LOGIN cu ");
-            console.log(globalConfig!.apiUrl);
-        let response:HttpResponse<string>=await this.api("/login","POST", user,null);
+            console.log(process.env.REACT_APP_PATH_TO);
+         let response:HttpResponse<string>=await this.api("/login","POST", user,null);
         // let response:HttpResponse<string>=await this.api("http://localhost:8080/api/v1/server/login","POST", user,null);
 
         if(response.status===200){
@@ -136,5 +136,18 @@ export default class Api{
         }
 
     }
+
+
+    // directqueryGetAllMapStoc = async (tokenString:string): Promise<MapStocOtim[]> => {
+    //
+    //     let data = await this.api("/direct", "GET", null,tokenString);
+    //     if(data.status===200){
+    //         return await data.json();
+    //     }else {
+    //         return Promise.reject([]);
+    //     }
+    //
+    // }
+
 
 }

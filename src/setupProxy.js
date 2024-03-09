@@ -7,6 +7,7 @@ module.exports = function(app) {
     if (path==="production"){
         ppath="http://edge:5000/"
     }
+    // ppath="http://3.252.249.66:5000/"
     console.log("Calea este "+ppath);
     app.use(
         '/server', // This is the API endpoint that will be proxied
