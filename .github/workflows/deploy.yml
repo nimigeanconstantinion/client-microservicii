@@ -44,7 +44,7 @@ jobs:
           token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
           path: 'docker-compose-microservices'
 
-      - name: Update and commit app version in docker-compose.yml in other repository
+      - name: Update and commit app version in docker-compose.yaml in other repository
         run: |
             cd docker-compose-microservices/
             echo -e "Current ./docker-compose.yaml\n$(cat docker-compose.yaml)"
