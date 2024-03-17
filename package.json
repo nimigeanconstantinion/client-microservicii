@@ -1,5 +1,4 @@
 {
-  "proxy": "http://3.252.249.66:5000/",
   "name": "client-microserv-redux",
   "version": "0.1.0",
   "private": true,

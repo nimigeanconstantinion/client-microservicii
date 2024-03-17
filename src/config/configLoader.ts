@@ -5,11 +5,13 @@ export let globalConfig: Config | null = null;
 export const loadConfig = async () => {
     try {
         let configPath='';
-        if (process.env.REACT_APP_PATH_TO === 'production') {
+        console.log("NODE_ENV=");
+        console.log("------"+process.env.NODE_ENV);
+        if (process.env.NODE_ENV === 'production') {
             console.log("Extrag production")
             configPath = '/config.production.json';
         }
-        if (process.env.REACT_APP_PATH_TO === 'development') {
+        if (process.env.NODE_ENV === 'development') {
             configPath = '/config.development.json';
         }
 
