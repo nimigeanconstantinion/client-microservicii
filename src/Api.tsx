@@ -13,7 +13,7 @@ export default class Api{
 
      //   const url ="/server"+ path;
         // const urll=process.env.NODE_ENV;
-        // alert(process.env.REACT_APP_PATH_TO)
+         alert(process.env.NODE_ENV)
         // const url=path;
         //atrntie
          const url="/server"+path;
