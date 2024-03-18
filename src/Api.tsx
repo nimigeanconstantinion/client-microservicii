@@ -13,6 +13,7 @@ export default class Api{
 
      //   const url ="/server"+ path;
         // const urll=process.env.NODE_ENV;
+         alert("test deploy");
          alert(process.env.NODE_ENV)
         // const url=path;
         //atrntie
@@ -111,6 +112,7 @@ export default class Api{
         // let x=loadConfig()
         console.log("La LOGIN cu ");
             console.log(process.env.REACT_APP_PATH_TO);
+            console.log(process.env.NODE_ENV);
          let response:HttpResponse<string>=await this.api("/login","POST", user,null);
         // let response:HttpResponse<string>=await this.api("http://localhost:8080/api/v1/server/login","POST", user,null);
 
