@@ -13,11 +13,19 @@ export default class Api{
 
      //   const url ="/server"+ path;
         // const urll=process.env.NODE_ENV;
-         alert("test deploy");
-         alert(process.env.NODE_ENV)
+        //  alert("test deploy");
+        //  alert(process.env.NODE_ENV)
         // const url=path;
         //atrntie
-         const url="/server"+path;
+        // let xpath="";
+        // if(path=="/login"){
+        //     xpath="http://34.247.255.42:5000/server/login";
+        // }else{
+        //     xpath="/server"+path;
+        // }
+       const url="http://34.247.255.42:5000/server"+path;
+        // const url=xpath;
+
          // alert("Caut in calea "+globalConfig!.apiUrl);
         // alert("si din env ="+urll);
 
@@ -114,6 +122,8 @@ export default class Api{
             console.log(process.env.REACT_APP_PATH_TO);
             console.log(process.env.NODE_ENV);
          let response:HttpResponse<string>=await this.api("/login","POST", user,null);
+
+
         // let response:HttpResponse<string>=await this.api("http://localhost:8080/api/v1/server/login","POST", user,null);
 
         if(response.status===200){
