@@ -6,7 +6,6 @@ module.exports = function(app) {
     //era ok let ppath="http://localhost:5000/"
     let ppath="http://34.247.255.42:5000/"
 
-
     console.log("Calea este "+ppath);
     app.use(
         '/server', // This is the API endpoint that will be proxied
