@@ -15,7 +15,7 @@ export default class Api{
         // const urll=process.env.NODE_ENV;
         // const url=path;
         // const url="http://localhost:5000"+path;
-        // alert("Caut in calea "+globalConfig!.apiUrl);
+         alert("Caut in calea "+globalConfig!.apiUrl);
         // alert("si din env ="+urll);
         const options: RequestInit = {
             method,
