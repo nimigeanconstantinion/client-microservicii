@@ -24,5 +24,6 @@ services:
     environment:
       - NODE_ENV=production
       - REACT_APP_PATH_TO=production
+
     ports:
       - "3000:3000"
