@@ -11,7 +11,7 @@ export default class Api{
     api<T, U>(path: string, method = "GET", body: U,token:string|null): Promise<HttpResponse<T>> {
 
 
-        const url ="http://34.247.255.42:5000"+"/server"+ path;
+        const url= "http://34.247.255.42:5000"+"/server"+ path;
         // const urll=process.env.NODE_ENV;
         // const url=path;
         // const url="http://localhost:5000"+path;
