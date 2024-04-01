@@ -1,4 +1,4 @@
 {
-  "apiUrl": "http://34.247.255.42:5000",
+  "apiUrl": "http://edge:5000",
   "featureFlag": true
 }
