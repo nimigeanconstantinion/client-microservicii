@@ -7,8 +7,8 @@ export const loadConfig = async () => {
 
         alert("Din config loader: "+process.env.NODE_ENV);
 
-        let configPath = '/config.development.json';
-        // console.log("-- --0000 ATENTIE   "+process.env.NODE_ENV);
+        let configPath = '/config.production.json';
+        console.log("-- --0000 ATENTIE   "+process.env.NODE_ENV);
         if (process.env.NODE_ENV === 'production') {
             configPath = '/config.production.json';
         }
