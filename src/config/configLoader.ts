@@ -14,7 +14,9 @@ export const loadConfig = async () => {
         }
 
         const response = await fetch(configPath);
+
         globalConfig = await response.json() as Config;
+        alert("din load config ies cu url=:");
         alert(globalConfig.apiUrl);
     } catch (error) {
         console.error('Failed to load config', error);
