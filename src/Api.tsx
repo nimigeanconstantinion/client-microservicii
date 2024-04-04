@@ -12,6 +12,7 @@ export default class Api{
 
 
         const url= "/server"+ path;
+
         // const urll=process.env.NODE_ENV;
         // const url=path;
         // const url="http://localhost:5000"+path;
@@ -49,7 +50,7 @@ export default class Api{
 
     queryGetAllMapStoc = async (tokenString:string): Promise<MapStocOtim[]> => {
 
-        let data = await this.api("/server/qallmap", "GET", null,tokenString);
+        let data = await this.api("/qallmap", "GET", null,tokenString);
         if(data.status===200){
             return await data.json();
         }else {
