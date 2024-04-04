@@ -12,7 +12,7 @@ export default class Api{
 
 
         const url= "/server"+ path;
-
+        alert("URL ul"+url);
         // const urll=process.env.NODE_ENV;
         // const url=path;
         // const url="http://localhost:5000"+path;
