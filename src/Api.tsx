@@ -49,7 +49,7 @@ export default class Api{
 
     queryGetAllMapStoc = async (tokenString:string): Promise<MapStocOtim[]> => {
 
-        let data = await this.api("/server/qallmap", "GET", null,tokenString);
+        let data = await this.api("/qallmap", "GET", null,tokenString);
         if(data.status===200){
             return await data.json();
         }else {
