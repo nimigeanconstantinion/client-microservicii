@@ -61,7 +61,7 @@ export default class Api{
 
     comGetAllMapStoc = async (tokenString:string): Promise<MapStocOtim[]> => {
 
-        let data = await this.api("/server/comallmap", "GET", null,tokenString);
+        let data = await this.api("/comallmap", "GET", null,tokenString);
         if(data.status===200){
             return await data.json();
         }else {
@@ -73,7 +73,7 @@ export default class Api{
 
     bulkAddMapStoc = async (newProd:MapStocOtim[],tokenString:string): Promise<boolean> => {
 
-        let data = await this.api("/server/addbulk", "POST", newProd,tokenString);
+        let data = await this.api("/addbulk", "POST", newProd,tokenString);
         if(data.status===200){
             return data.json();
         }else {
@@ -84,7 +84,7 @@ export default class Api{
 
     updMapStoc = async (newProd:MapStocOtim,tokenString:string): Promise<boolean> => {
 
-        let data = await this.api("/server/upd", "POST", newProd,tokenString);
+        let data = await this.api("/upd", "POST", newProd,tokenString);
         if(data.status===200){
             return data.json();
         }else {
@@ -96,7 +96,7 @@ export default class Api{
 
     delMapStoc = async (delProd:string,tokenString:string): Promise<boolean> => {
 
-        let data = await this.api("/server/del/"+delProd, "DELETE", null,tokenString);
+        let data = await this.api("/del/"+delProd, "DELETE", null,tokenString);
         if(data.status===200){
             return data.json();
         }else {
