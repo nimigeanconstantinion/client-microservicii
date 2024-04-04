@@ -10,8 +10,8 @@ export default class Api{
 
     api<T, U>(path: string, method = "GET", body: U,token:string|null): Promise<HttpResponse<T>> {
 
-        const url="http://34.247.255.42:5000/server"+path;
-        // era ok cu proxy activ const url= "/server"+ path;
+        // const url="http://34.247.255.42:5000/server"+path;
+         const url= "/server"+ path;
         // alert("URL ul"+url);
         // const urll=process.env.NODE_ENV;
         // const url=path;
