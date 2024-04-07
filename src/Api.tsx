@@ -11,14 +11,9 @@ export default class Api{
     api<T, U>(path: string, method = "GET", body: U,token:string|null): Promise<HttpResponse<T>> {
 
         // const url="http://34.247.255.42:5000/server"+path;
-         const url= "/server"+ path;
-        // alert("URL ul"+url);
-        // const urll=process.env.NODE_ENV;
-        // const url=path;
-        // const url="http://localhost:5000"+path;
-        //  alert("Caut in calea "+globalConfig!.apiUrl);
-        // alert("Profilul este  ===="+process.env.NODE_ENV);
-        // alert("si din env ="+urll);
+
+        const url= "http://34.247.255.42:5000/server"+ path;
+
         const options: RequestInit = {
             method,
             mode:"cors",
