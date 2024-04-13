@@ -12,13 +12,14 @@ export default class Api{
 
         // const url="http://34.247.255.42:5000/server"+path;
 
-        const url= "http://34.247.255.42:5000/server"+ path;
+        const url= "http://localhost:5000/server"+ path;
 
         const options: RequestInit = {
             method,
             mode:"cors",
             headers:{
-                "Content-Type" : "application/json;charset=utf-8"
+                "Content-Type" : "application/json;charset=utf-8",
+                "Access-Control-Allow-Origin": "*",
             },
             body: body == null ? null : JSON.stringify(body)
         }

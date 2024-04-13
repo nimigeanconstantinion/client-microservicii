@@ -26,7 +26,94 @@ export const WrapperNewHome=styled.div`
 
 
   }
-
+  
+  
+  //// -----------------------------------
+  //
+  //.p-contextmenu .p-menuitem {
+  //  background-color: white;
+  //
+  //}
+  //
+  //.icomen{
+  //  margin-right: 20px;
+  //}
+  ///* Change the font color of the menu items */
+  //.p-contextmenu .p-menuitem-text {
+  //  color: darkred !important;
+  //}
+  //
+  ///* Change the background color of the menu items on hover */
+  //.p-contextmenu .p-menuitem:hover {
+  //  color:yellow !important;
+  //
+  //}
+  //
+  //
+  //
+  ///* Change the font color of the menu items on hover */
+  //.p-contextmenu .p-menuitem:hover .p-menuitem-text {
+  //  color: #fff;
+  //}
+  //
+  //.p-menuitem-active .p-menuitem-link{
+  //  background-color: #6869F5 !important;
+  //  color: whitesmoke !important;
+  //}
+  //.p-menuitem-active .p-menuitem-link .p-menuitem-text{
+  //  color: whitesmoke !important;
+  //}
+  //.badge.bg-primary.rounded-pill{
+  //  background: #DE4A37 !important;
+  //  /*position: absolute;*/
+  //  /*top: 3px;*/
+  //  /*right:2px;*/
+  //}
+  //
+  //.nav-item .dropdown{
+  //  z-index:-1 !important;
+  //}
+  //
+  //div.dropdown-menu.show{
+  //  width:230px !important;
+  //}
+  //
+  //.dbackk button.btn.btn-danger{
+  //  margin-top: 30px !important;
+  //}
+  //
+  //.cmddiv.badge.bg-primary.rounded-pill{
+  //  background-color: darkgrey !important;
+  //}
+  //
+  //
+  //ul.pagination{
+  //  /*width:700px !important;*/
+  //  /*margin: auto !important;*/
+  //  margin:auto !important;
+  //}
+  //
+  //.page-item.active a.page-link.selp {
+  //  color: white !important;
+  //  background-color: #DE4A37 !important;
+  //
+  //}
+  //
+  //.page-item:not(first-child) .page-link{
+  //  background: #97A5A6 !important;
+  //
+  //}
+  //
+  //.page-item:last-child .page-link,.page-item:first-child .page-link {
+  //  background:gray !important;
+  //}
+  //
+  //.btn.btn-outline-light{
+  //  margin-right: 10px !important;
+  //}
+  //
+  //
+  ////----------------------------------------
   .divbtns {
     margin-left: auto;
   }

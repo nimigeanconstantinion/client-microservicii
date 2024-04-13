@@ -4,6 +4,8 @@ import {
     selectRetrieveMapStocOptState,
     selectTotObjSate
 } from "../../store/queryMapStocOptim/queryMapStocOpt.selector";
+import '../../App.css';
+
 import {selLoadAuthToken, selLoadAuthUser, selLoginRegisterStatus} from "../../store/authorization/auth.selector"
 import {loadCMDMap} from "../../store/comMapStocOptim/comMapStocOptim.selector";
 import React, {ChangeEvent, useEffect, useRef, useState} from "react";

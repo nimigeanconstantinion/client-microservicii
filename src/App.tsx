@@ -12,7 +12,7 @@ function App() {
 
         <div className="App">
             <header className="App-header">
-                <BrowserRouter>
+                <BrowserRouter basename={"/ui"}>
                     <Routes>
                         <Route path={"/"} element={<Homes/>}/>
                         {/*<Route path={"/test"} element={<MyComponent/>}/>*/}
