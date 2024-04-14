@@ -11,8 +11,9 @@ export default class Api{
     api<T, U>(path: string, method = "GET", body: U,token:string|null): Promise<HttpResponse<T>> {
 
         // const url="http://34.247.255.42:5000/server"+path;
+        const basepath=process.env.REACT_APP_API_URL
 
-        const url= "http://34.247.255.42:5000/server"+ path;
+        const url= basepath+"/server"+ path;
 
         const options: RequestInit = {
             method,
