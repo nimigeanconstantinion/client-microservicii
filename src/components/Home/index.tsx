@@ -4,6 +4,8 @@ import {
     selectRetrieveMapStocOptState,
     selectTotObjSate
 } from "../../store/queryMapStocOptim/queryMapStocOpt.selector";
+import '../../index.css';
+
 import '../../App.css';
 
 import {selLoadAuthToken, selLoadAuthUser, selLoginRegisterStatus} from "../../store/authorization/auth.selector"
