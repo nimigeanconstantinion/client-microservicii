@@ -5,6 +5,8 @@ import {Provider} from "react-redux";
 import store from "./store/store";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Homes from "./components/Home/index";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
