@@ -746,7 +746,7 @@ const Homes:React.FC=()=> {
                         {
                             spin>0?(
                                 <>
-                                    <img className={"imgspin"} src={spinner} alt={"My gif"}/>
+                                    <img className={"imgspin"} src={require('../../Images/spinner.gif')} alt={"My gif"}/>
 
                                 </>
                             ):(
