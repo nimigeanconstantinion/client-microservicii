@@ -30,7 +30,8 @@ import {
     setTotalObjects
 } from "../../store/queryMapStocOptim/queryMapStocOpt.reducer";
 import store from "../../store/store";
-import spinner from "../../spinner.gif"
+require('../../Images/spinner.gif');
+// import spinner from "../../spinner.gif";
 import WrapperNewHome from "./IndexStyle";
 import Grid from "../GridComp/index"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
