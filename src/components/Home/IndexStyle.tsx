@@ -264,6 +264,10 @@ export const WrapperNewHome=styled.div`
     width: 100% !important;
   }
 
+  #topmenu{
+    background-color: #2E3E51 !important;
+
+  }
 
   .divc {
     background-color: transparent;
