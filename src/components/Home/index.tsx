@@ -30,8 +30,8 @@ import {
     setTotalObjects
 } from "../../store/queryMapStocOptim/queryMapStocOpt.reducer";
 import store from "../../store/store";
-require('../../Images/spinner.gif');
-// import spinner from "../../spinner.gif";
+// require('../../Images/spinner.gif');
+// import spinner from "/spinner.gif";
 import WrapperNewHome from "./IndexStyle";
 import Grid from "../GridComp/index"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -746,7 +746,7 @@ const Homes:React.FC=()=> {
                         {
                             spin>0?(
                                 <>
-                                    <img className={"imgspin"} src={spinner} alt="My GIF" />
+                                    <img className={"imgspin"} src={"/spinner.gif"} alt="My GIF" />
 
                                 </>
                             ):(
