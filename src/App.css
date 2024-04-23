@@ -122,5 +122,8 @@ ul.pagination{
   margin-right: 10px !important;
 }
 
+.alert .alert-dismissible .alert-danger{
+  background-color: red !important;
+}
 
 
