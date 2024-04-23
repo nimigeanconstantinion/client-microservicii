@@ -269,8 +269,9 @@ export const WrapperNewHome=styled.div`
 
   }
 
-  .divcontainer.alert.alert-dismissible.alert-danger{
-    background-color: red !important;
+  .alert.alert-dismissible.alert-danger{
+    --bs-alert-bg: red !important;
+
   }
 
   .divc {

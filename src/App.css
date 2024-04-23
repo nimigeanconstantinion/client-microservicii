@@ -122,8 +122,9 @@ ul.pagination{
   margin-right: 10px !important;
 }
 
-.divcontainer.alert.alert-dismissible.alert-danger{
-  background-color: red !important;
+.alert.alert-dismissible.alert-danger{
+  --bs-alert-bg: red !important;
+
 }
 
 
