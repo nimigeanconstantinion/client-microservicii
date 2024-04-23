@@ -269,6 +269,10 @@ export const WrapperNewHome=styled.div`
 
   }
 
+  .divcontainer.alert.alert-dismissible.alert-danger{
+    background-color: red !important;
+  }
+
   .divc {
     background-color: transparent;
     width: 300px;
