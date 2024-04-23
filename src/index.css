@@ -15,8 +15,8 @@ code {
   background: #82322f;
 }
 
-.alert.alert-dismissible.alert-danger{
-  --bs-alert-bg: red !important;
+/*.alert.alert-dismissible.alert-danger{*/
+/*  --bs-alert-bg: red !important;*/
 
-}
+/*}*/
 

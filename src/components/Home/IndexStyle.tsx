@@ -27,8 +27,8 @@ export const WrapperNewHome=styled.div`
 
 
   }
-  
-  
+
+
   //// -----------------------------------
   //
   //.p-contextmenu .p-menuitem {
@@ -159,7 +159,7 @@ export const WrapperNewHome=styled.div`
 
   .main {
     padding: 10px;
-    width: 100% ;
+    width: 100%;
     height: 100%;
     grid-column: 2/-1;
     grid-row: 1/4;
@@ -264,13 +264,13 @@ export const WrapperNewHome=styled.div`
     width: 100% !important;
   }
 
-  #topmenu{
+  #topmenu {
     background-color: #2E3E51 !important;
 
   }
 
-  .alert.alert-dismissible.alert-danger{
-    --bs-alert-bg: red !important;
+  .alert.alert-dismissible.alert-danger {
+    --bs-alert-bg:  #DE4A37 !important;
 
   }
 
@@ -408,10 +408,10 @@ export const WrapperNewHome=styled.div`
     line-height: 20px;
   }
 
-  .dfrontq p{
+  .dfrontq p {
     color:
   }
-  
+
   .card-text {
     margin-top: 2px;
   }
@@ -427,7 +427,7 @@ export const WrapperNewHome=styled.div`
     font-size: .8em;
   }
 
-  
+
   .dfrontq p {
     margin-top: 5px;
     color: #2E3E51;
@@ -450,31 +450,32 @@ export const WrapperNewHome=styled.div`
     background: #287864;
     color: white;
   }
+
   .dfrontqr {
     background: #2E3E51;
     color: white;
   }
 
-  
+
   .dfrontq .card-header {
     border-bottom: 1px solid #2E3E51 !important;
-     color: #2E3E51 !important;
-      height: 25% !important;
-      margin-bottom: 0px !important;
+    color: #2E3E51 !important;
+    height: 25% !important;
+    margin-bottom: 0px !important;
     //  background: black;
     //  
   }
 
-  .dfrontql .card-header,.dfrontqr .card-header {
+  .dfrontql .card-header, .dfrontqr .card-header {
     border-bottom: 1px solid white !important;
-      color: white !important;
-      height: 25% !important;
-     margin-bottom: 0px !important;
+    color: white !important;
+    height: 25% !important;
+    margin-bottom: 0px !important;
     //  background: black;
     //  
   }
-  
-  .dfrontql,.dfrontqr {
+
+  .dfrontql, .dfrontqr {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -489,7 +490,7 @@ export const WrapperNewHome=styled.div`
   //.dfrontqr .card-header{
   //  border-bottom: 1px solid white !important; 
   //}
-  
+
   .dbackqLogin {
     position: relative;
     //top: 100px;
@@ -509,7 +510,7 @@ export const WrapperNewHome=styled.div`
     color: white;
     transform: rotateY(180deg);
   }
-  
+
   div.dropdown-menu .show {
     width: 250px !important;
   }
@@ -532,19 +533,23 @@ export const WrapperNewHome=styled.div`
   }
 
   /* Ascunde initial al doilea div */
-  .firstDiv{
+
+  .firstDiv {
     border: 1px solid red;
     background-color: dimgray;
     transition: transform 0.8s;
 
   }
+
   .secondDiv {
     display: none;
-    
+
   }
-  .authusr{
-    margin-top:auto;
+
+  .authusr {
+    margin-top: auto;
   }
+
   /* Afiseaza al doilea div la hover pe primul div */
   //.firstDiv:hover + .secondDiv {
   //  display: block;
@@ -558,24 +563,24 @@ export const WrapperNewHome=styled.div`
   //}
 
 
-  .btn-success{
+  .btn-success {
     margin: 50px auto;
   }
-  
-  
-  
-  .authusr{
+
+
+  .authusr {
     background: #2E3E51;
   }
-  li.nav-item.authusr p{
+
+  li.nav-item.authusr p {
     font-size: .7em;
     font-weight: normal;
     line-height: 20px;
     padding: 0px;
-    margin: 0px auto;  
+    margin: 0px auto;
     color: white !important;
   }
-  
+
 
 `
 

@@ -122,9 +122,9 @@ ul.pagination{
   margin-right: 10px !important;
 }
 
-.alert.alert-dismissible.alert-danger{
-  --bs-alert-bg: red !important;
+/*.alert.alert-dismissible.alert-danger{*/
+/*  --bs-alert-bg: red !important;*/
 
-}
+/*}*/
 
 
