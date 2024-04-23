@@ -105,7 +105,7 @@ export default class Api{
     login=async (user:User):Promise<User>=>{
         // let x=loadConfig()
         console.log("La LOGIN cu ");
-            console.log(globalConfig!.apiUrl);
+            // console.log(globalConfig!.apiUrl);
         let response:HttpResponse<string>=await this.api("/login","POST", user,null);
         // let response:HttpResponse<string>=await this.api("http://localhost:8080/api/v1/server/login","POST", user,null);
 

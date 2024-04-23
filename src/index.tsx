@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 );
 
 
-loadConfig().then(()=>{
+// loadConfig().then(()=>{
 
     root.render(
         <React.StrictMode>
@@ -21,10 +21,10 @@ loadConfig().then(()=>{
         </React.StrictMode>
     );
 
-}).catch(ex=>{
-
-    console.log(ex);
-});
+// }).catch(ex=>{
+//
+//     console.log(ex);
+// });
 
 
 // If you want to start measuring performance in your app, pass a function
