@@ -746,8 +746,8 @@ const Homes:React.FC=()=> {
                         {
                             spin>0?(
                                 <>
-                                    <img className={"imgspin"} src={spinner} alt={"My gif"}/>
-
+                                    {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
+                                    <p>Incarc.....</p>
                                 </>
                             ):(
                                 shMess?(

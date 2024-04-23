@@ -36,12 +36,12 @@ export default class Api{
     // let config = useConfig();
 
     loadEnvVariables=async ()=>{
-        try{
-            await loadConfig();
-            return process.env.NODE_ENV;
-        }catch (e){
-
-        }
+        // try{
+        //     await loadConfig();
+        //     return process.env.NODE_ENV;
+        // }catch (e){
+        //
+        // }
 
     }
 
