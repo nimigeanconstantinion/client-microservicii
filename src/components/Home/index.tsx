@@ -31,7 +31,7 @@ import {
 } from "../../store/queryMapStocOptim/queryMapStocOpt.reducer";
 import store from "../../store/store";
 // require('../../Images/spinner.gif');
-import spinner from "src/Images/spinner.gif";
+import spinner from "/app/Images/spinner.gif";
 import WrapperNewHome from "./IndexStyle";
 import Grid from "../GridComp/index"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
