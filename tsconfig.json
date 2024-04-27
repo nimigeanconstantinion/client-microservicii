@@ -22,6 +22,9 @@
   },
   "include": [
     "src",
-    "src/**/*","*.gif"
+    "src/**/*"
+  ],
+  "typeRoots": [
+    "node_modules/@types","src/types"
   ]
 }
