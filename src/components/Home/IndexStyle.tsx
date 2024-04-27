@@ -269,6 +269,9 @@ export const WrapperNewHome=styled.div`
 
   }
 
+  .spinner-border{
+    color: red !important;
+  }
   .alert.alert-dismissible.alert-danger {
     --bs-alert-bg:  #DE4A37 !important;
 

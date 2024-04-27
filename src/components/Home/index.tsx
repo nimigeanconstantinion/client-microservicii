@@ -38,6 +38,8 @@ import Grid from "../GridComp/index"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFloppyDisk, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {Tooltip} from "react-bootstrap";
+import Spinner from 'react-bootstrap/Spinner';
+
 import MyTooltip from "./../OverlayMess/Index"
 import ConfirmBox from "../ConfirmBox";
 import Login from "../Login";
@@ -748,6 +750,9 @@ const Homes:React.FC=()=> {
                             spin>0?(
                                 <>
                                     <img className={"imgspin"} src={spinner} alt={"My gif"}/>
+                                    {/*<div className={"imgspin"} role="status">*/}
+                                    {/*    <span className="sr-only">Loading...</span>*/}
+                                    {/*</div>*/}
                                     {/*<img className={"imgspin"} src={myimg} alt={"My gif"}/>*/}
                                     {/*<p>Incarc.....</p>*/}
                                 </>
