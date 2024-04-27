@@ -31,7 +31,7 @@ import {
 } from "../../store/queryMapStocOptim/queryMapStocOpt.reducer";
 import store from "../../store/store";
 // require('../../Images/spinner.gif');
-import spinner from "public/spinner.gif";
+import spinner from "../../spinner.gif";
 import myimg from '../../Images/logo192.png';
 import WrapperNewHome from "./IndexStyle";
 import Grid from "../GridComp/index"
@@ -747,8 +747,8 @@ const Homes:React.FC=()=> {
                         {
                             spin>0?(
                                 <>
-                                    {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
-                                    <img className={"imgspin"} src={myimg} alt={"My gif"}/>
+                                    <img className={"imgspin"} src={spinner} alt={"My gif"}/>
+                                    {/*<img className={"imgspin"} src={myimg} alt={"My gif"}/>*/}
                                     {/*<p>Incarc.....</p>*/}
                                 </>
                             ):(
