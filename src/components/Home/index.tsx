@@ -31,7 +31,7 @@ import {
 } from "../../store/queryMapStocOptim/queryMapStocOpt.reducer";
 import store from "../../store/store";
 // require('../../Images/spinner.gif');
-import spinner from "../../spinner.gif";
+import spinner from "../../../src/Images/spinner.gif";
 import WrapperNewHome from "./IndexStyle";
 import Grid from "../GridComp/index"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -746,8 +746,8 @@ const Homes:React.FC=()=> {
                         {
                             spin>0?(
                                 <>
-                                    {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
-                                    <p>Incarc.....</p>
+                                    <img className={"imgspin"} src={spinner} alt={"My gif"}/>
+                                    {/*<p>Incarc.....</p>*/}
                                 </>
                             ):(
                                 shMess?(
