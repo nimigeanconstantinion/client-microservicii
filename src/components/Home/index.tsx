@@ -32,6 +32,7 @@ import {
 import store from "../../store/store";
 // require('../../Images/spinner.gif');
 import spinner from "public/spinner.gif";
+import myimg from '../../Images/logo192.png';
 import WrapperNewHome from "./IndexStyle";
 import Grid from "../GridComp/index"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -746,7 +747,8 @@ const Homes:React.FC=()=> {
                         {
                             spin>0?(
                                 <>
-                                    <img className={"imgspin"} src={spinner} alt={"My gif"}/>
+                                    {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
+                                    <img className={"imgspin"} src={myimg} alt={"My gif"}/>
                                     {/*<p>Incarc.....</p>*/}
                                 </>
                             ):(
