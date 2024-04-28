@@ -33,7 +33,7 @@ import store from "../../store/store";
 // require('../../Images/spinner.gif');
 
 
-import spinner from "../../spinner.90672f1deffccbcdf4f1.gif";
+import spinner from "../../spinner.gif";
 // import spinn from "build/static/media/spinner.90672f1deffccbcdf4f1.gif"
 
 import myimg from '../../Images/logo192.png';
@@ -754,7 +754,7 @@ const Homes:React.FC=()=> {
                             spin>0?(
 
                                 <>
-                                    <img className={"imgspin"} src={spinn} alt={"My gif"}/>
+                                    <img className={"imgspin"} src={spinner} alt={"My gif"}/>
 
                                     {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
                                     {/*<div className={"imgspin"} role="status">*/}
