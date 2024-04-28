@@ -33,8 +33,8 @@ import store from "../../store/store";
 // require('../../Images/spinner.gif');
 
 
-import spinner from "../../spinner.gif";
-import spinn from "build/static/media/spinner.90672f1deffccbcdf4f1.gif"
+import spinner from "../../spinner.90672f1deffccbcdf4f1.gif";
+// import spinn from "build/static/media/spinner.90672f1deffccbcdf4f1.gif"
 
 import myimg from '../../Images/logo192.png';
 import WrapperNewHome from "./IndexStyle";
