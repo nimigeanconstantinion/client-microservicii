@@ -32,13 +32,14 @@ import {
 import store from "../../store/store";
 // require('../../Images/spinner.gif');
 import spinner from "../../spinner.gif";
+
 import myimg from '../../Images/logo192.png';
 import WrapperNewHome from "./IndexStyle";
 import Grid from "../GridComp/index"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFloppyDisk, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {Tooltip} from "react-bootstrap";
-import Spinner from 'react-bootstrap/Spinner';
+// import Spinner from 'react-bootstrap/Spinner';
 
 import MyTooltip from "./../OverlayMess/Index"
 import ConfirmBox from "../ConfirmBox";

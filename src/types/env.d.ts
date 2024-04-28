@@ -4,9 +4,10 @@ export interface EnvVariables {
 
 }
 
-declare module '*.gif'{
+declare module '*.gif'
+{
 
 
-    const value:string;
+    const value: string|any;
     export  default  value;
 }
