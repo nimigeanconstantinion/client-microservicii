@@ -100,6 +100,7 @@ const Homes:React.FC=()=> {
 
     },[])
 
+    const spinimage=require("../../Images/spinner.gif")
     useEffect(()=>{
 
         console.log("Effect Pst="+pst);
@@ -758,7 +759,7 @@ const Homes:React.FC=()=> {
 
                                 <>
                                     {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
-                                    <img className={"imgspin"} src={spinner}></img>
+                                    <img className={"imgspin"} src={spinimage}></img>
                                     {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
                                     {/*<div className={"imgspin"} role="status">*/}
                                     {/*    <span className="sr-only">Loading...</span>*/}
