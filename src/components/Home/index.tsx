@@ -33,7 +33,7 @@ import store from "../../store/store";
 // require('../../Images/spinner.gif');
 
 
-import spinner from "./spinner.gif";
+import spinner from '../../Images/ripples.svg';
 
 import ripp from "../../Images/ripples.svg"
 
