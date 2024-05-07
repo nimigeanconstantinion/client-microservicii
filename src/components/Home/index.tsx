@@ -911,7 +911,6 @@ const Homes:React.FC=()=> {
                     </p>
                 </div>
 
-
             </WrapperNewHome>
 
         // </>
