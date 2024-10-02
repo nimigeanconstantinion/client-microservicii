@@ -30,6 +30,7 @@ import {
     setTotalObjects
 } from "../../store/queryMapStocOptim/queryMapStocOpt.reducer";
 import store from "../../store/store";
+import myImg from "./spinner.gif"
 // require('../../Images/spinner.gif');
 
 
@@ -759,7 +760,9 @@ const Homes:React.FC=()=> {
 
                                 <>
                                     {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
-                                    <img className={"imgspin"} src={spinimage}></img>
+                                    {/*<img className={"imgspin"} src={spinimage}></img>*/}
+
+                                    img src={require('./spinner.gif')} alt="loading..." /
                                     {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
                                     {/*<div className={"imgspin"} role="status">*/}
                                     {/*    <span className="sr-only">Loading...</span>*/}

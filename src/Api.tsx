@@ -12,8 +12,9 @@ export default class Api{
 
         // const url="http://34.247.255.42:5000/server"+path;
         const basepath=process.env.REACT_APP_API_URL
-        console.log(basepath);
+        console.log("---BASEPATH="+basepath);
         const url= basepath+"/server"+ path;
+        //  const url= 'http://localhost:5000/server'+ path;
 
         const options: RequestInit = {
             method,
