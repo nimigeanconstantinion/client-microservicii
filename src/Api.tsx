@@ -96,6 +96,7 @@ export default class Api{
 
         let data = await this.api("/del/"+delProd, "DELETE", null,tokenString);
         if(data.status===200){
+            console.log("am primit status ok pentru "+delProd);
             return data.json();
         }else {
             return Promise.reject([]);
