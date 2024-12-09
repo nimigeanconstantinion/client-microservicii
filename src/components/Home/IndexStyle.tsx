@@ -177,6 +177,14 @@ export const WrapperNewHome=styled.div`
 
   }
 
+  .spinner{
+    position: absolute;
+    z-index: 200;
+    width: 100px;
+    height: 100px;
+    fill:black;
+  }
+  
   .divutil {
     background: wheat;
     color: darkred;

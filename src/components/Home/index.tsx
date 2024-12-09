@@ -36,6 +36,8 @@ import myImg from "./spinner.gif"
 
 import spinner from '../../Images/ripples.svg';
 
+import {ReactComponent as Spinner} from "../../Images/gear-spinner.svg";
+
 import ripp from "../../Images/ripples.svg"
 
 // import spinn from "build/static/media/spinner.90672f1deffccbcdf4f1.gif"
@@ -761,8 +763,9 @@ const Homes:React.FC=()=> {
                                 <>
                                     {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
                                     {/*<img className={"imgspin"} src={spinimage}></img>*/}
+                                    <Spinner className={"spinner"} />
 
-                                    <img src={require('./spinner.gif')} alt="loading..." />
+?                                    <img src={require('./spinner.gif')} alt="loading..." />
                                     {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
                                     {/*<div className={"imgspin"} role="status">*/}
                                     {/*    <span className="sr-only">Loading...</span>*/}
