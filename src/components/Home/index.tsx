@@ -765,7 +765,7 @@ const Homes:React.FC=()=> {
                                     {/*<img className={"imgspin"} src={spinimage}></img>*/}
                                     <Spinner className={"spinner"} />
 
-?                                    <img src={require('./spinner.gif')} alt="loading..." />
+                                    {/*<img src={require('./spinner.gif')} alt="loading..." />*/}
                                     {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
                                     {/*<div className={"imgspin"} role="status">*/}
                                     {/*    <span className="sr-only">Loading...</span>*/}
