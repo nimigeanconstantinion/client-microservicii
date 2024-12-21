@@ -36,7 +36,8 @@ import myImg from "./spinner.gif"
 
 import spinner from '../../Images/ripples.svg';
 
-import {ReactComponent as Spinner} from "../../Images/gear-spinner.svg";
+// import {ReactComponent as Spinner} from "../../Images/gear-spinner.svg";
+import {ReactComponent as Spinner} from "../../Images/spinner.gif";
 
 import ripp from "../../Images/ripples.svg"
 
