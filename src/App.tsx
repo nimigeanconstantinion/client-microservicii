@@ -6,6 +6,7 @@ import store from "./store/store";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Homes from "./components/Home/index";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import SpinComp from "../src/components/SpinComp/index"
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
                 <BrowserRouter basename={"/ui"}>
                     <Routes>
                         <Route path={"/"} element={<Homes/>}/>
-                        {/*<Route path={"/test"} element={<MyComponent/>}/>*/}
+                        <Route path={"/test"} element={<SpinComp/>}/>
                     </Routes>
                 </BrowserRouter>
 

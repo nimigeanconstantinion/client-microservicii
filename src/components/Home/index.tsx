@@ -33,17 +33,19 @@ import store from "../../store/store";
 import myImg from "./spinner.gif"
 // require('../../Images/spinner.gif');
 
+import Myspin from "../imagine/index";
 
-import spinner from '../../Images/ripples.svg';
+ import spinner from "../assets/spinner.gif";
 
-// import {ReactComponent as Spinner} from "../../Images/gear-spinner.svg";
-import {ReactComponent as Spinner} from "../../Images/spinner.gif";
 
-import ripp from "../../Images/ripples.svg"
+import {ReactComponent as Spinner} from "../../Images/gear-spinner.svg";
+//  import {ReactComponent as Spinner} from "../../Images/spinner.gif";
+
+// import ripp from "../../Images/ripples.svg"
 
 // import spinn from "build/static/media/spinner.90672f1deffccbcdf4f1.gif"
 
-import myimg from '../../Images/logo192.png';
+// import myimg from '../../Images/logo192.png';
 import WrapperNewHome from "./IndexStyle";
 import Grid from "../GridComp/index"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -762,10 +764,11 @@ const Homes:React.FC=()=> {
                             spin>0?(
 
                                 <>
-                                    {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
+                                    <img className={"imgspin"} src={spinner} alt={"My gif"}/>
                                     {/*<img className={"imgspin"} src={spinimage}></img>*/}
-                                    <Spinner className={"spinner"} />
+                                    {/*<Spinner className={"spinner"} />*/}
 
+                                    {/*<Myspin/>*/}
                                     {/*<img src={require('./spinner.gif')} alt="loading..." />*/}
                                     {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
                                     {/*<div className={"imgspin"} role="status">*/}
