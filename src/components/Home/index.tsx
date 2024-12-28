@@ -38,7 +38,7 @@ import Myspin from "../imagine/index";
  import spinner from "../assets/spinner.gif";
 
 
-import {ReactComponent as Spinner} from "../../Images/gear-spinner.svg";
+import {ReactComponent as Spinner} from "../../Images/tube-spinner.svg";
 //  import {ReactComponent as Spinner} from "../../Images/spinner.gif";
 
 // import ripp from "../../Images/ripples.svg"
@@ -764,9 +764,9 @@ const Homes:React.FC=()=> {
                             spin>0?(
 
                                 <>
-                                    <img className={"imgspin"} src={spinner} alt={"My gif"}/>
+                                    {/*<img className={"imgspin"} src={spinner} alt={"My gif"}/>*/}
                                     {/*<img className={"imgspin"} src={spinimage}></img>*/}
-                                    {/*<Spinner className={"spinner"} />*/}
+                                    <Spinner className={"spinner"} />
 
                                     {/*<Myspin/>*/}
                                     {/*<img src={require('./spinner.gif')} alt="loading..." />*/}
