@@ -2,20 +2,33 @@ import MapStocOtim from "./models/MapStocOtim";
 import HttpResponse from "./models/HttpResponse";
 import User from "./models/User";
 // import {getEnvVariables} from "./utility/envUtils";
-import {globalConfig, loadConfig} from './config/configLoader';
+// asta era  import {globalConfig, loadConfig} from './config/configLoader';
 // let env = getEnvVariables();
 
+import {loadConfig} from "./utile/utile";
 
 export default class Api{
 
-    api<T, U>(path: string, method = "GET", body: U,token:string|null): Promise<HttpResponse<T>> {
+   async api<T, U>(path: string, method = "GET", body: U,token:string|null): Promise<HttpResponse<T>> {
+        // --------------------asta era necom
+        // // const url="http://34.247.255.42:5000/server"+path;
+        //
+        //
+        //
+        // const basepath=process.env.REACT_APP_API_URL
+        // console.log("---BASEPATH="+basepath);
+        // const url= basepath+"/server"+ path;
+        // //  const url= 'http://localhost:5000/server'+ path;
+        // -----------------------------------------------------
 
-        // const url="http://34.247.255.42:5000/server"+path;
-        const basepath=process.env.REACT_APP_API_URL
-        console.log("---BASEPATH="+basepath);
-        const url= basepath+"/server"+ path;
-        //  const url= 'http://localhost:5000/server'+ path;
+        let basepath = await this.getBaseURL();
+        if (!basepath) {
+            console.log("++ Nu aveam basepath")
+            basepath = "http://localhost:5000"; // fallback if config fails
+        }
 
+        const url = basepath + path;
+        console.log(url);
         const options: RequestInit = {
             method,
             mode:"cors",
@@ -36,6 +49,18 @@ export default class Api{
 
     // let config = useConfig();
 
+
+    getBaseURL=async () =>{
+
+        try {
+            let response = await loadConfig();
+            return response.REACT_APP_URL;
+        }catch (e) {
+            return Promise.reject("Error");
+        }
+
+
+    }
     loadEnvVariables=async ()=>{
         // try{
         //     await loadConfig();

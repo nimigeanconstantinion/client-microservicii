@@ -183,6 +183,7 @@ export const WrapperNewHome=styled.div`
     width: 100px;
     height: 100px;
     fill:black;
+    
   }
   
   .divutil {
@@ -236,6 +237,10 @@ export const WrapperNewHome=styled.div`
 
     overflow-y: auto;
     overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   //.divgrd:nth-child(even){
@@ -246,7 +251,7 @@ export const WrapperNewHome=styled.div`
   //  background-color: gold;
   //}
 
-  .divgrd, .divuti, .divtop {
+  .divgrd, .divuti, .divtop,.divutil {
     width: 100%;
   }
 
