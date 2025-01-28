@@ -29,8 +29,7 @@ export default class Api{
        const url= basepath+"/server"+ path;
 
         //
-        // const url = basepath + path;
-        console.log(url);
+        console.log("URL DE INTEROGARE="+url);
         const options: RequestInit = {
             method,
             mode:"cors",
