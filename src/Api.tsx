@@ -55,6 +55,9 @@ export default class Api{
 
         try {
             let response = await loadConfig();
+            console.log("^^^^^^ din getBaseURL");
+            console.log(response);
+            console.log("======================______=======================");
             return response.REACT_APP_API_URL;
         }catch (e) {
             return Promise.reject("Error");
