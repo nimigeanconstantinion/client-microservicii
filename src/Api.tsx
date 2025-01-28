@@ -4,7 +4,7 @@ import User from "./models/User";
 // import {getEnvVariables} from "./utility/envUtils";
 // asta era  import {globalConfig, loadConfig} from './config/configLoader';
 // let env = getEnvVariables();
-
+import {AppConfig} from "./models/AppConfig";
 import {loadConfig} from "./utile/utile";
 
 export default class Api{
@@ -12,22 +12,24 @@ export default class Api{
    async api<T, U>(path: string, method = "GET", body: U,token:string|null): Promise<HttpResponse<T>> {
         // --------------------asta era necom
         // // const url="http://34.247.255.42:5000/server"+path;
-        //
-        //
-        //
-        // const basepath=process.env.REACT_APP_API_URL
-        // console.log("---BASEPATH="+basepath);
-        // const url= basepath+"/server"+ path;
-        // //  const url= 'http://localhost:5000/server'+ path;
-        // -----------------------------------------------------
 
-        let basepath = await this.getBaseURL();
+
+        //
+        // let basepath=process.env.REACT_APP_API_URL
+        // console.log("---BASEPATH="+basepath);
+
+        //  const url= 'http://localhost:5000/server'+ path;
+        // -----------------------------------------------------
+        let basepath=await this.getBaseURL();
+        // let basepath = await this.getBaseURL();
         if (!basepath) {
             console.log("++ Nu aveam basepath")
             basepath = "http://localhost:5000"; // fallback if config fails
         }
+       const url= basepath+"/server"+ path;
 
-        const url = basepath + path;
+        //
+        // const url = basepath + path;
         console.log(url);
         const options: RequestInit = {
             method,
@@ -54,7 +56,7 @@ export default class Api{
 
         try {
             let response = await loadConfig();
-            return response.REACT_APP_URL;
+            return response.REACT_APP_API_URL;
         }catch (e) {
             return Promise.reject("Error");
         }
