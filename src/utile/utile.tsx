@@ -1,9 +1,9 @@
 import { AppConfig } from '../models/AppConfig';
 
 export async function loadConfig(): Promise<AppConfig> {
-    const response = await fetch('/ui/config/config.json');
+    const response = await fetch('/config/config.json');
     console.log("****************** SUNT IN LOADcONFIG **************");
-    console.log(response);
+    console.log(response.json());
     console.log("///// raspuns");
 
     if (!response.ok) {
