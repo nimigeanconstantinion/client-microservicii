@@ -26,6 +26,7 @@ export default class Api{
             console.log("++ Nu aveam basepath")
             basepath = "http://localhost:5000"; // fallback if config fails
         }
+        basepath="http://react-app.local";
        const url= basepath+"/server"+ path;
 
         //
