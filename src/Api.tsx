@@ -22,6 +22,7 @@ export default class Api{
         // -----------------------------------------------------
         let basepath=await this.getBaseURL();
         // let basepath = await this.getBaseURL();
+        console.log(basepath);
         if (!basepath) {
             console.log("++ Nu aveam basepath")
             basepath = "http://localhost:5000"; // fallback if config fails
