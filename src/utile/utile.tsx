@@ -1,4 +1,5 @@
 import { AppConfig } from '../models/AppConfig';
+import {getInstance} from "http-proxy-middleware/dist/logger";
 
 export async function loadConfig(): Promise<AppConfig> {
     const response = await fetch('/config/config.json');
@@ -11,6 +12,17 @@ export async function loadConfig(): Promise<AppConfig> {
         return { BASE_URL: '',REACT_APP_API_URL: '' };
     }
 
-    const config: AppConfig = await response.json();
+    let config = response.json().then(a=>{
+        if(typeof a=="object"){
+            return a as AppConfig;
+        }else{
+            return {BASE_URL: '',REACT_APP_API_URL: ''}
+        }
+
+    }).catch(e=>{return {BASE_URL: '',REACT_APP_API_URL: ''} as AppConfig});
+
+    console.log(config);
+    console.log("->->===============================|||||||||||||||||||||-----------");
+
     return config;
 }

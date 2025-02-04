@@ -21,6 +21,7 @@ export default class Api{
         //  const url= 'http://localhost:5000/server'+ path;
         // -----------------------------------------------------
         let basepath=await this.getBaseURL();
+        console.log("Am obtinut baseurl="+basepath)
         // let basepath = await this.getBaseURL();
         console.log(basepath);
         if (!basepath) {
