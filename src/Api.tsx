@@ -29,7 +29,7 @@ export default class Api{
             basepath = "http://localhost:5000"; // fallback if config fails
         }
         basepath="http://react-app.local";
-       const url= basepath+"/server"+ path;
+        const url= basepath+"/server"+ path;
 
         //
         console.log("URL DE INTEROGARE="+url);
