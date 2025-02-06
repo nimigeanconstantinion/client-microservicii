@@ -269,7 +269,8 @@ const Homes:React.FC=()=> {
                 try{
 
                     let respp:boolean=await api.bulkAddMapStoc(addList,myToken!);
-
+                    console.log(respp)
+                    console.log(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;")
                     try{
 
                         let r=await qLoad();
@@ -293,7 +294,21 @@ const Homes:React.FC=()=> {
 
     let synchro=async ():Promise<void>=>{
 
-        await bulkAdd(newObLst);
+        let lista=newObLst;
+        let k=1;
+        if(lista.length>100){
+            while(lista.length>0){
+                let pag=lista.splice(0,500);
+                console.log(pag);
+                await bulkAdd(pag);
+
+            }
+
+        }else{
+            await bulkAdd(newObLst);
+        }
+
+
     }
 
 
