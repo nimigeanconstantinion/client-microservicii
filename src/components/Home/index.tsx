@@ -298,7 +298,7 @@ const Homes:React.FC=()=> {
         let k=1;
         if(lista.length>100){
             while(lista.length>0){
-                let pag=lista.splice(0,500);
+                let pag=lista.splice(0,50);
                 console.log(pag);
                 await bulkAdd(pag);
 
