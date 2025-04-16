@@ -24,7 +24,8 @@ const store=configureStore({
         comMapStocState:comMapStocSlice,
         loginAuthState:authSlice
     },
-    middleware:[thunk]
+    middleware:[thunk],
+    // devTools: false
 })
 
 export default store;
