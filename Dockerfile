@@ -27,5 +27,7 @@ COPY . .
 # Expose the port on which the app runs
 EXPOSE 3000
 
+ENV BROWSER=none
+
 # Command to start the React app
 CMD ["npm", "start"]
