@@ -2,7 +2,9 @@ name: CD - Deploy Client-service API
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+
   workflow_dispatch:
 
 permissions:
